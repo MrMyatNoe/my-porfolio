@@ -1,4 +1,5 @@
 import { Box, Container, Flex, Heading, Image, Text } from '@chakra-ui/react'
+import { BsGithub, BsLinkedin, BsMessenger, BsTwitter } from 'react-icons/bs'
 
 export function Introduction() {
   return (
@@ -39,7 +40,15 @@ export function Introduction() {
             gap="4"
             direction={['column', 'row']}
           >
-            <Text fontSize="xl">Bangkok</Text>
+            <Text fontSize="2xl" color="blue" fontWeight="bold">
+              Bangkok
+            </Text>
+          </Flex>
+          <Flex align="left" gap="4" direction="row">
+            <BsLinkedin size="20" />
+            <BsTwitter size="20" />
+            <BsGithub size="20" />
+            <BsMessenger size="20" />
           </Flex>
         </Box>
         <Box w={['100%', '50%']}>
