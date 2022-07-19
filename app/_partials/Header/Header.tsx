@@ -2,7 +2,7 @@ import { Container, Flex, Stack, Text } from '@chakra-ui/react'
 
 export function Header() {
   return (
-    <Container maxW="7xl" bg="red">
+    <Container maxW="7xl">
       <Flex
         as="nav"
         w="100%"

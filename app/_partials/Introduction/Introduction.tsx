@@ -3,7 +3,7 @@ import { BsGithub, BsLinkedin, BsMessenger, BsTwitter } from 'react-icons/bs'
 
 export function Introduction() {
   return (
-    <Container maxW="7xl" bg="yellow.200">
+    <Container maxW="7xl">
       <Flex
         w="100%"
         px="6"

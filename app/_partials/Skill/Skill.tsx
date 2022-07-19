@@ -5,7 +5,7 @@ import { Mobile } from './Mobile'
 
 export function Skill() {
   return (
-    <Container maxW="7xl" bg="pink.200" mt={4} mb={4}>
+    <Container maxW="7xl" mt={4} mb={4}>
       <Center>
         <Heading>He Does</Heading>
       </Center>
