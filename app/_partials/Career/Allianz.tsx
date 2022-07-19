@@ -1,7 +1,7 @@
 import { Divider, Heading, Text, VStack } from '@chakra-ui/react'
 import React from 'react'
 
-export const FPT = () => {
+export const Allianz = () => {
   return (
     <VStack spacing={1} mt={4}>
       <VStack spacing="none">
