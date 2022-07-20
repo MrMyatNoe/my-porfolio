@@ -18,7 +18,7 @@ export const Allianz = () => {
           Specific in backend development
         </Heading>
         <Text fontSize="xl">Learning new features</Text>
-        <Text fontSize="xl">& new Enviroments </Text>
+        <Text fontSize="xl">& new Environments </Text>
         <Text fontSize="xl">& new Cultures</Text>
       </VStack>
       <Divider fontWeight="bold" />
