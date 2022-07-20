@@ -1,5 +1,4 @@
 import { Divider, Heading, Text, VStack } from '@chakra-ui/react'
-import React from 'react'
 
 export const MBC = () => {
   return (
@@ -21,7 +20,7 @@ export const MBC = () => {
           <Text fontSize="xl">Add new feature</Text>
           <Text fontSize="xl">in framework for maintenance</Text>
           <Text fontSize="xl">using Java, GWT Framework, Jasper Report</Text>
-          <Text fontSize="xl">
+          <Text fontSize="xl" color="gray.400">
             Java / GWT Framework / MSSQL2012 / Jasper Report
           </Text>
         </VStack>
@@ -38,7 +37,9 @@ export const MBC = () => {
           <Text fontSize="xl">for admins, doctors and cashiers</Text>
           <Text fontSize="xl">Took part coding</Text>
           <Text fontSize="xl">using Java, GWT Framework</Text>
-          <Text fontSize="xl">XHTML / Java / GWT Framework / MSSQL2012</Text>
+          <Text fontSize="xl" color="gray.400">
+            XHTML / Java / GWT Framework / MSSQL2012
+          </Text>
         </VStack>
       </VStack>
 
@@ -53,7 +54,9 @@ export const MBC = () => {
           <Text fontSize="xl">for previllege customers</Text>
           <Text fontSize="xl">in both Admin Side and Client Side</Text>
           <Text fontSize="xl">using Java, GWT Framework</Text>
-          <Text fontSize="xl">REST API / Java / GWT Framework / MSSQL2012</Text>
+          <Text fontSize="xl" color="gray.400">
+            REST API / Java / GWT Framework / MSSQL2012
+          </Text>
         </VStack>
       </VStack>
 
@@ -68,7 +71,7 @@ export const MBC = () => {
           <Text fontSize="xl">from Architecture Design, Detail Design</Text>
           <Text fontSize="xl">to coding, testing</Text>
           <Text fontSize="xl">using Java, Spring Boot Framework</Text>
-          <Text fontSize="xl">
+          <Text fontSize="xl" color="gray.400">
             REST API / Java8 / Spring Boot Framework / MongoDB
           </Text>
         </VStack>

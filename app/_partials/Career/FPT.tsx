@@ -1,5 +1,4 @@
 import { Divider, Heading, Text, VStack } from '@chakra-ui/react'
-import React from 'react'
 
 export const FPT = () => {
   return (
@@ -20,7 +19,9 @@ export const FPT = () => {
         <Text fontSize="xl">Add new feature</Text>
         <Text fontSize="xl">in framework for maintenance</Text>
         <Text fontSize="xl">using Java, J2EE</Text>
-        <Text fontSize="xl">Java/ J2EE / OracleDB</Text>
+        <Text fontSize="xl" color="gray.400">
+          Java/ J2EE / OracleDB
+        </Text>
       </VStack>
       <Divider fontWeight="bold" />
     </VStack>

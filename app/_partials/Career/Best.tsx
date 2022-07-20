@@ -1,5 +1,4 @@
 import { Divider, Heading, Text, VStack } from '@chakra-ui/react'
-import React from 'react'
 
 export const Best = () => {
   return (
@@ -21,7 +20,9 @@ export const Best = () => {
             MMaritime App
           </Heading>
           <Text fontSize="xl">using Dart, Flutter, Firebase, Admob</Text>
-          <Text fontSize="xl">Dart / Flutter / Firebase / Admob</Text>
+          <Text fontSize="xl" color="gray.400">
+            Dart / Flutter / Firebase / Admob
+          </Text>
         </VStack>
         <Divider fontWeight="bold" />
       </VStack>
