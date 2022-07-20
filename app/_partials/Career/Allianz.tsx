@@ -6,7 +6,7 @@ export const Allianz = () => {
     <VStack spacing={1} mt={4}>
       <VStack spacing="none">
         <Heading fontSize="xl" fontWeight="black">
-          Allianz Thailand(July 2012 - Current)
+          Allianz Thailand(July 2022 - Current)
         </Heading>
         <Heading fontSize="xl" fontWeight="black">
           Advanced Backend Developer
