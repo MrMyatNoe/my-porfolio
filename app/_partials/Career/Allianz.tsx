@@ -1,4 +1,4 @@
-import { Divider, Heading, Text, VStack } from '@chakra-ui/react'
+import { Divider, Heading, Text, VStack } from '@chakra-ui/react';
 
 export const Allianz = () => {
   return (

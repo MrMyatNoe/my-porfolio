@@ -1,4 +1,9 @@
+import Lottie from 'lottie-react'
+import mobile from 'public/jsons/mobile.json'
+
 import { Heading, Text, VStack } from '@chakra-ui/react'
+
+import { style } from '../custom-css'
 
 export function Mobile() {
   return (

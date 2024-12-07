@@ -1,4 +1,9 @@
-import { Heading, Text, VStack } from '@chakra-ui/react'
+import Lottie from 'lottie-react';
+import backend from 'public/jsons/backend.json';
+
+import { Heading, Text, VStack } from '@chakra-ui/react';
+
+import { style } from '../custom-css';
 
 export function Backend() {
   return (
