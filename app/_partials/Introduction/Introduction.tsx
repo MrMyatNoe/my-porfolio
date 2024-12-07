@@ -1,17 +1,10 @@
-import {
-  Box,
-  Container,
-  Flex,
-  Heading,
-  Image,
-  Link,
-  Text,
-} from '@chakra-ui/react'
 import { BsGithub, BsLinkedin, BsMessenger, BsTwitter } from 'react-icons/bs'
+
+import { Box, Flex, Heading, Image, Link, Text } from '@chakra-ui/react'
 
 export function Introduction() {
   return (
-    <Container maxW="7xl">
+    <>
       <Flex
         w="100%"
         px="6"
@@ -84,6 +77,6 @@ export function Introduction() {
           </Flex>
         </Box>
       </Flex>
-    </Container>
+    </>
   )
 }

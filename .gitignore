@@ -9,4 +9,5 @@ node_modules
 /public/build
 /api/index.js
 /api/index.js.map
-package-lock.json
+/package-lock.json
+/api
