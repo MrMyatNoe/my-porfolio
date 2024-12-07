@@ -1,12 +1,9 @@
 import { Heading, Text, VStack } from '@chakra-ui/react'
-import Lottie from 'lottie-react'
-import backend from 'public/jsons/backend.json'
-import { style } from '../custom-css'
 
 export function Backend() {
   return (
     <VStack align="center" w="100%">
-      <Lottie animationData={backend} style={style} />
+      {/* <Lottie animationData={backend} style={style} /> */}
       <Heading fontSize="xl" fontWeight="black">
         Frontend
       </Heading>
