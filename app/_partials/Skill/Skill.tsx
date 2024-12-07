@@ -1,11 +1,12 @@
 import { Center, Container, Flex, Heading } from '@chakra-ui/react'
-import { Frontend } from './Frontend'
+
 import { Backend } from './Backend'
+import { Frontend } from './Frontend'
 import { Mobile } from './Mobile'
 
 export function Skill() {
   return (
-    <Container maxW="7xl" mt={4} mb={4}>
+    <>
       <Center>
         <Heading>He Does</Heading>
       </Center>
@@ -14,6 +15,6 @@ export function Skill() {
         <Backend />
         <Mobile />
       </Flex>
-    </Container>
+    </>
   )
 }

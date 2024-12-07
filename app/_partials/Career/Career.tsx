@@ -1,4 +1,5 @@
-import { Container, Flex, Heading } from '@chakra-ui/react'
+import { Flex, Heading } from '@chakra-ui/react'
+
 import { Allianz } from './Allianz'
 import { Best } from './Best'
 import { FPT } from './FPT'
@@ -7,7 +8,7 @@ import { Nanyan } from './Nanyan'
 
 export const Career = () => {
   return (
-    <Container maxW="7xl">
+    <>
       <Flex align="center" direction="column">
         <Heading>Career</Heading>
         <FPT />
@@ -16,6 +17,6 @@ export const Career = () => {
         <Best />
         <Allianz />
       </Flex>
-    </Container>
+    </>
   )
 }
