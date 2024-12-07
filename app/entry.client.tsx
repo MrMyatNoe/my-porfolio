@@ -1,4 +1,5 @@
-import { RemixBrowser } from "@remix-run/react";
-import { hydrate } from "react-dom";
+import { hydrate } from 'react-dom'
 
-hydrate(<RemixBrowser />, document);
+import { RemixBrowser } from '@remix-run/react'
+
+hydrate(<RemixBrowser />, document)

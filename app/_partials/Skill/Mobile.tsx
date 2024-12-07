@@ -1,12 +1,9 @@
 import { Heading, Text, VStack } from '@chakra-ui/react'
-import Lottie from 'lottie-react'
-import mobile from 'public/jsons/mobile.json'
-import { style } from '../custom-css'
 
 export function Mobile() {
   return (
     <VStack align="center" w="100%">
-      <Lottie animationData={mobile} style={style} />
+      {/* <Lottie animationData={mobile} style={style} /> */}
       <Heading fontSize="xl" fontWeight="black">
         Frontend
       </Heading>

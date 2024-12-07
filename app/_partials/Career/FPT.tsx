@@ -1,5 +1,4 @@
 import { Divider, Heading, Text, VStack } from '@chakra-ui/react'
-import React from 'react'
 
 export const FPT = () => {
   return (
