@@ -1,6 +1,12 @@
+:root {
+  --primary-color: #1e90ff;
+  --secondary-color: #ff4500;
+  --font-family: 'Inter', sans-serif;
+}
+
 body {
-  font-family: Arial, sans-serif !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  box-sizing: border-box !important;
+  margin: 0;
+  font-family: var(--font-family);
+  background-color: var(--primary-color);
+  color: #ffffff;
 }

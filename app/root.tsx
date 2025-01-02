@@ -1,3 +1,5 @@
+import styles from '~/styles/global.css'
+
 import { ChakraProvider } from '@chakra-ui/react'
 import {
   Links,
@@ -11,12 +13,12 @@ import {
 import theme from './theme'
 
 import type { MetaFunction } from '@remix-run/node'
-
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
   title: 'Thet Myat Noe',
   viewport: 'width=device-width,initial-scale=1',
 })
+export const links = () => [{ rel: 'stylesheet', href: styles }]
 
 export default function App() {
   return (

@@ -2,15 +2,7 @@ import { LuSunMoon } from 'react-icons/lu'
 import { MdOutlineWbSunny } from 'react-icons/md'
 import { resumeData } from '~/data/resume'
 
-import {
-  Container,
-  Flex,
-  IconButton,
-  Spacer,
-  Stack,
-  Text,
-  useColorMode,
-} from '@chakra-ui/react'
+import { Flex, IconButton, Spacer, Stack, useColorMode } from '@chakra-ui/react'
 import { Link } from '@remix-run/react'
 
 export function Header() {
