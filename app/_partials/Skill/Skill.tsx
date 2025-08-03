@@ -1,4 +1,4 @@
-import { Center, Container, Flex, Heading } from '@chakra-ui/react'
+import { Center, Flex, Heading } from '@chakra-ui/react'
 
 import { Backend } from './Backend'
 import { Frontend } from './Frontend'

@@ -8,7 +8,7 @@ import { style } from '../custom-css'
 export function Mobile() {
   return (
     <VStack align="center" w="100%">
-      {/* <Lottie animationData={mobile} style={style} /> */}
+      <Lottie animationData={mobile} style={style} />
       <Heading fontSize="xl" fontWeight="black">
         Mobile
       </Heading>

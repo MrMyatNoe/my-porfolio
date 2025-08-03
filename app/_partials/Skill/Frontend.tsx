@@ -8,7 +8,7 @@ import { style } from '../custom-css'
 export function Frontend() {
   return (
     <VStack align="center" w="100%">
-      {/* <Lottie animationData={frontend} style={style} /> */}
+      <Lottie animationData={frontend} style={style} />
       <Heading fontSize="xl" fontWeight="black">
         Frontend
       </Heading>
