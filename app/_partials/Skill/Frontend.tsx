@@ -1,9 +1,9 @@
-import Lottie from 'lottie-react';
-import frontend from 'public/jsons/frontend.json';
+import Lottie from 'lottie-react'
+import frontend from 'public/jsons/frontend.json'
 
-import { Heading, Text, VStack } from '@chakra-ui/react';
+import { Heading, Text, VStack } from '@chakra-ui/react'
 
-import { style } from '../custom-css';
+import { style } from '../custom-css'
 
 export function Frontend() {
   return (

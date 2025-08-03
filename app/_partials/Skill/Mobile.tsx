@@ -10,14 +10,14 @@ export function Mobile() {
     <VStack align="center" w="100%">
       {/* <Lottie animationData={mobile} style={style} /> */}
       <Heading fontSize="xl" fontWeight="black">
-        Frontend
+        Mobile
       </Heading>
       <Heading fontSize="xl" fontWeight="black">
         Development
       </Heading>
-      <Text fontSize="xl">Delivers secure and scalable</Text>
-      <Text fontSize="xl">backend APIs, ranging from</Text>
-      <Text fontSize="xl">Public to Private</Text>
+      <Text fontSize="xl">Real-time mobile apps</Text>
+      <Text fontSize="xl">delivering seamless user experiences</Text>
+      <Text fontSize="xl">using Flutter</Text>
     </VStack>
   )
 }
