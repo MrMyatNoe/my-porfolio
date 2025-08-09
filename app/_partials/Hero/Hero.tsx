@@ -1,9 +1,7 @@
 import {
-  BsFillPinMapFill,
   BsGithub,
   BsLinkedin,
   BsMessenger,
-  BsPhoneVibrateFill,
   BsTwitter,
 } from 'react-icons/bs'
 import { LuMail, LuMapPin, LuPhone } from 'react-icons/lu'

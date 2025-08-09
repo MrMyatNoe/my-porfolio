@@ -13,9 +13,12 @@ export function Skill() {
       px="6"
       py="5"
       direction="column"
+      gap="4"
     >
       <Center>
-        <Heading>He Does</Heading>
+        <Heading fontSize={['30px', '40px']} size="lg" letterSpacing="2px">
+          He Does
+        </Heading>
       </Center>
       <Flex
         w="100%"
