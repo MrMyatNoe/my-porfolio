@@ -1,20 +1,18 @@
 import { Flex, Heading } from '@chakra-ui/react'
 
 import { Allianz } from './Allianz'
-import { Best } from './Best'
 import { FPT } from './FPT'
 import { MBC } from './MBC'
-import { Nanyan } from './Nanyan'
 
 export const Career = () => {
   return (
     <>
-      <Flex align="center" direction="column">
-        <Heading>Career</Heading>
+      <Flex align="center" direction="column"  mt={['10', '12']} mb={['10', '12']}>
+        <Heading fontSize={['20px', '25px']} size="lg" letterSpacing="2px">
+          Career
+        </Heading>
         <FPT />
         <MBC />
-        <Nanyan />
-        <Best />
         <Allianz />
       </Flex>
     </>
