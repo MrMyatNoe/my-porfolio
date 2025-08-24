@@ -1,5 +1,3 @@
-import { Icon } from '@chakra-ui/react'
-
 export const resumeData = {
   personalInfo: {
     name: 'Thet Myat Noe',
