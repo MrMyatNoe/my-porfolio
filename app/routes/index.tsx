@@ -1,17 +1,13 @@
-import { Career } from '~/_partials/Career'
-import { Freelance } from '~/_partials/Freelance'
 import { Hero } from '~/_partials/Hero'
-import { Persona } from '~/_partials/Persona/Persona'
 import { Skill } from '~/_partials/Skill'
 import { TimeLine } from '~/_partials/Timeline'
-import { Header } from '~/components/Header'
 
 import { Container, Divider, Flex, Heading } from '@chakra-ui/react'
 
 export default function Index() {
   return (
-    <Container maxW="100%">
-      <Header />
+    <Container maxW="100%" alignContent="center">
+      {/* <Header /> */}
       <Hero />
       <Divider fontWeight="bold" color="gray.700" />
       <Skill />
