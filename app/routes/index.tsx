@@ -16,12 +16,12 @@ export default function Index() {
       <Divider fontWeight="bold" color="gray.700" />
       <Skill />
       <Divider fontWeight="bold" color="gray.700" />
-      <Career />
+      {/* <Career />
       <Divider fontWeight="bold" color="gray.700" />
       <Freelance />
       <Divider fontWeight="bold" color="gray.700" />
       <Persona />
-      <Divider fontWeight="bold" color="gray.700" />
+      <Divider fontWeight="bold" color="gray.700" /> */}
       <TimeLine />
       <Divider fontWeight="bold" color="gray.700" />
       <Flex align="center" direction="column">
