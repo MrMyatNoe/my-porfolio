@@ -1,5 +1,5 @@
-import { FaJava, FaMobile, FaReact } from 'react-icons/fa'
-import { SiChakraui, SiFramework, SiSpringboot } from 'react-icons/si'
+import { FaJava, FaMobile, FaReact } from 'react-icons/fa';
+import { SiChakraui, SiFramework, SiSpringboot } from 'react-icons/si';
 
 export const milestones = [
   {
