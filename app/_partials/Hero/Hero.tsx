@@ -1,29 +1,8 @@
-import { BsGithub, BsLinkedin, BsMessenger, BsTwitter } from 'react-icons/bs'
-import { LuMail, LuMapPin, LuPhone } from 'react-icons/lu'
-import { resumeData } from '~/data/resume'
+import { Contacts } from '~/components/Contacts';
+import { SocialLinks } from '~/components/SocialLinks';
+import { resumeData } from '~/data/resume';
 
-import {
-  Box,
-  Flex,
-  Heading,
-  HStack,
-  Image,
-  Link,
-  Stack,
-  Text,
-} from '@chakra-ui/react'
-
-const iconMap = {
-  BsLinkedin: BsLinkedin,
-  BsTwitter: BsTwitter,
-  BsGithub: BsGithub,
-  BsMessenger: BsMessenger,
-  LuMapPin: LuMapPin,
-  LuPhone: LuPhone,
-  LuMail: LuMail,
-} as const
-
-type IconKey = keyof typeof iconMap
+import { Box, Flex, Heading, Image, Stack, Text } from '@chakra-ui/react';
 
 export function Hero() {
   const { name, title, description, profileImage, socialLinks, contacts } =
@@ -51,27 +30,10 @@ export function Hero() {
               {description}
             </Text>
             <Flex align="left" gap="6" direction="row">
-              {socialLinks.map(({ href, icon }, index) => {
-                const Icon = iconMap[icon as IconKey]
-                return (
-                  <Link key={index} href={href} isExternal>
-                    <Icon size="20" />
-                  </Link>
-                )
-              })}
+              <SocialLinks links={socialLinks} />
             </Flex>
             <Flex align="left" gap="2" direction="column">
-              {contacts.map(({ key, contact, icon }) => {
-                const Icon = iconMap[icon as IconKey]
-                return (
-                  <HStack key={key}>
-                    <Icon size="20" />
-                    <Text fontSize={'sm'} color="gray.500">
-                      {contact}
-                    </Text>
-                  </HStack>
-                )
-              })}
+              <Contacts contacts={contacts} />
             </Flex>
           </Stack>
         </Box>

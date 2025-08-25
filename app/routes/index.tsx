@@ -1,12 +1,13 @@
-import { Hero } from '~/_partials/Hero'
-import { Skill } from '~/_partials/Skill'
-import { TimeLine } from '~/_partials/Timeline'
+import { Hero } from '~/_partials/Hero';
+import { Skill } from '~/_partials/Skill';
+import { TimeLine } from '~/_partials/Timeline';
+import { Footer } from '~/components/Footer';
 
-import { Container, Divider, Flex, Heading } from '@chakra-ui/react'
+import { Container, Divider } from '@chakra-ui/react';
 
 export default function Index() {
   return (
-    <Container maxW="100%" alignContent="center">
+    <Container maxW="80%" alignContent="center">
       {/* <Header /> */}
       <Hero />
       <Divider fontWeight="bold" color="gray.700" />
@@ -20,17 +21,7 @@ export default function Index() {
       <Divider fontWeight="bold" color="gray.700" /> */}
       <TimeLine />
       <Divider fontWeight="bold" color="gray.700" />
-      <Flex align="center" direction="column">
-        <Heading
-          fontSize={['20px', '25px']}
-          size="lg"
-          letterSpacing="2px"
-          mt={['10', '12']}
-          mb={['10', '12']}
-        >
-          Footer
-        </Heading>
-      </Flex>
+      <Footer />
     </Container>
   )
 }
