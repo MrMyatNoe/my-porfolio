@@ -1,4 +1,4 @@
-import { BsGithub, BsLinkedin, BsMessenger, BsTwitter } from 'react-icons/bs';
+import { BsGithub, BsLinkedin, BsFacebook, BsMessenger, BsTwitter } from 'react-icons/bs';
 
 import { Link } from '@chakra-ui/react';
 
@@ -7,6 +7,7 @@ const iconMap = {
   BsTwitter: BsTwitter,
   BsGithub: BsGithub,
   BsMessenger: BsMessenger,
+  BsFacebook: BsFacebook,
 } as const
 
 type IconKey = keyof typeof iconMap

@@ -19,8 +19,8 @@ export const resumeData = {
         icon: 'BsGithub',
       },
       {
-        href: 'https://www.facebook.com/messages/t/100004598350152',
-        icon: 'BsMessenger',
+        href: 'https://www.facebook.com/thet.myatnoe.988',
+        icon: 'BsFacebook',
       },
     ],
     contacts: [

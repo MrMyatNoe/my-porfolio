@@ -5,11 +5,18 @@ import { milestones } from '~/data/career';
 
 import { Box, Center, Flex, Heading, useBreakpointValue } from '@chakra-ui/react';
 
-export function TimeLine() {
+export function Timeline() {
   const isDesktop = useBreakpointValue({ base: false, md: true })
   const isMobile = useBreakpointValue({ base: true, md: false })
   return (
-    <>
+    <Flex
+      mt={['10', '12']}
+      mb={['10', '12']}
+      w="100%"
+      px="6"
+      py="5"
+      direction="column"
+      gap="4">
       <Center>
         <Heading fontSize={['30px', '40px']} size="lg" letterSpacing="2px">
           Experience
@@ -44,6 +51,6 @@ export function TimeLine() {
           </Flex>
         ))}
       </Box>
-    </>
+    </Flex>
   )
 }

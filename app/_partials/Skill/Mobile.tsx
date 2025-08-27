@@ -16,7 +16,7 @@ export function Mobile() {
         Development
       </Heading>
       <Text fontSize="xl">Real-time mobile apps</Text>
-      <Text fontSize="xl">delivering seamless user experiences</Text>
+      <Text fontSize="xl">delivering user experiences</Text>
       <Text fontSize="xl">using Flutter</Text>
     </VStack>
   )

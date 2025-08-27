@@ -1,6 +1,6 @@
 import { Hero } from '~/_partials/Hero';
 import { Skill } from '~/_partials/Skill';
-import { TimeLine } from '~/_partials/Timeline';
+import { Timeline } from '~/_partials/Timeline';
 import { Footer } from '~/components/Footer';
 
 import { Container, Divider } from '@chakra-ui/react';
@@ -19,7 +19,7 @@ export default function Index() {
       <Divider fontWeight="bold" color="gray.700" />
       <Persona />
       <Divider fontWeight="bold" color="gray.700" /> */}
-      <TimeLine />
+      <Timeline />
       <Divider fontWeight="bold" color="gray.700" />
       <Footer />
     </Container>
