@@ -34,7 +34,9 @@ const Card = ({
   let borderWidthValue = isEvenId ? '15px 15px 15px 0' : '15px 0 15px 15px'
   let leftValue = isEvenId ? '-15px' : 'unset'
   let rightValue = isEvenId ? 'unset' : '-15px'
+  const isDesktop = useBreakpointValue({ base: false, md: true })
   const isMobile = useBreakpointValue({ base: true, md: false })
+  let iconSize = isMobile ? 10 : 12
   if (isMobile) {
     leftValue = '-15px'
     rightValue = 'unset'
@@ -64,15 +66,8 @@ const Card = ({
         display: 'block',
       }}
     >
-      <Icon as={icon} w={12} h={12} color="teal.400" />
+      <Icon as={icon} w={iconSize} h={iconSize} color="teal.400" />
       <Box>
-        <HStack spacing={2} mb={1} flexWrap="wrap">
-          {categories.map((cat) => (
-            <Badge variant="outline" colorScheme="green" key={cat}>
-              {cat}
-            </Badge>
-          ))}
-        </HStack>
         <VStack mb={3} textAlign="left" alignItems="flex-start">
           <Text
             _hover={{ color: 'teal.400' }}
@@ -83,13 +78,20 @@ const Card = ({
           >
             {title}
           </Text>
-          <Text fontSize="md" noOfLines={2}>
+          <Text fontSize="sm" color='teal.400'>
+            {date}
+          </Text>
+          <Text fontSize="md">
             {description}
           </Text>
+          <HStack spacing={2} mb={1} flexWrap="wrap">
+            {categories.map((cat) => (
+              <Badge variant="outline" colorScheme="green" key={cat}>
+                {cat}
+              </Badge>
+            ))}
+          </HStack>
         </VStack>
-        <Text fontSize="sm" color={isEvenId ? 'teal.400' : 'blue.400'}>
-          {date}
-        </Text>
       </Box>
     </HStack>
   )
