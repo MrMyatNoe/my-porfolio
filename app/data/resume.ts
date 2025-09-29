@@ -9,18 +9,22 @@ export const resumeData = {
       {
         href: 'https://www.linkedin.com/in/thet-myat-noe-14682b142/',
         icon: 'BsLinkedin',
+        label: 'LinkedIn',
       },
       {
         href: 'https://twitter.com/ThetMyatNoe13',
         icon: 'BsTwitter',
+        label: 'Twitter',
       },
       {
         href: 'https://github.com/MrMyatNoe',
         icon: 'BsGithub',
+        label: 'Github',
       },
       {
         href: 'https://www.facebook.com/thet.myatnoe.988',
         icon: 'BsFacebook',
+        label: 'Facebook',
       },
     ],
     contacts: [
