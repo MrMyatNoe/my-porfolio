@@ -1,15 +1,6 @@
-import { IconType } from 'react-icons'
+import type { IconType } from 'react-icons'
 
-import {
-  Badge,
-  Box,
-  HStack,
-  Icon,
-  Text,
-  useBreakpointValue,
-  useColorModeValue,
-  VStack,
-} from '@chakra-ui/react'
+import { Badge, Box, HStack, Icon, Text, VStack } from '@chakra-ui/react'
 
 interface CardProps {
   id: number
@@ -20,68 +11,37 @@ interface CardProps {
   date: string
 }
 
-const Card = ({
-  id,
-  categories,
-  title,
-  icon,
-  description,
-  date,
-}: CardProps) => {
-  // For even id show card on left side
-  // For odd id show card on right side
-  const isEvenId = id % 2 == 0
-  let borderWidthValue = isEvenId ? '15px 15px 15px 0' : '15px 0 15px 15px'
-  let leftValue = isEvenId ? '-15px' : 'unset'
-  let rightValue = isEvenId ? 'unset' : '-15px'
-  const isDesktop = useBreakpointValue({ base: false, md: true })
-  const isMobile = useBreakpointValue({ base: true, md: false })
-  let iconSize = isMobile ? 10 : 12
-  if (isMobile) {
-    leftValue = '-15px'
-    rightValue = 'unset'
-    borderWidthValue = '15px 15px 15px 0'
-  }
+const Card = ({ categories, title, icon, description, date }: CardProps) => {
   return (
     <HStack
       flex={1}
-      p={{ base: 3, sm: 6 }}
-      bg={useColorModeValue('gray.100', 'gray.800')}
+      p={[4, 6]}
+      bg="bg.surfaceRaised"
       spacing={5}
       rounded="lg"
       pos="relative"
       _before={{
         content: `""`,
-        w: '0',
-        h: '0',
-        borderColor: `transparent ${useColorModeValue(
-          '#edf2f6',
-          '#1a202c',
-        )} transparent`,
-        borderStyle: 'solid',
-        borderWidth: borderWidthValue,
         position: 'absolute',
-        left: leftValue,
-        right: rightValue,
-        display: 'block',
+        left: '-15px',
+        top: 0,
+        w: 0,
+        h: 0,
+        borderStyle: 'solid',
+        borderWidth: '15px 15px 15px 0',
+        borderColor: 'transparent var(--chakra-colors-bg-surfaceRaised) transparent transparent',
       }}
     >
-      <Icon as={icon} w={iconSize} h={iconSize} color="teal.400" />
+      <Icon as={icon} w={[10, 12]} h={[10, 12]} color="text.accent" />
       <Box>
         <VStack mb={3} textAlign="left" alignItems="flex-start">
-          <Text
-            _hover={{ color: 'teal.400' }}
-            fontSize="md"
-            lineHeight={1.2}
-            fontWeight="bold"
-            w="100%"
-          >
+          <Text _hover={{ color: 'text.accent' }} fontSize="md" lineHeight={1.2} fontWeight="bold" w="100%">
             {title}
           </Text>
-          <Text fontSize="sm" color='teal.400'>
+          <Text fontSize="sm" color="text.accent">
             {date}
           </Text>
-          <Text fontSize="md">
+          <Text fontSize="md" color="text.secondary">
             {description}
           </Text>
           <HStack spacing={2} mb={1} flexWrap="wrap">
