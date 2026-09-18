@@ -62,7 +62,7 @@ export function Header() {
           </Box>
         </HStack>
 
-        <HStack spacing={8} display={{ base: 'none', md: 'flex' }}>
+        <HStack spacing={8} display={{ base: 'none', md: 'flex' }} data-testid="desktop-nav">
           {NAV_LINKS.map((link) => (
             <Link key={link.href} href={link.href} fontSize="14px" color="text.secondary">
               {link.label}
