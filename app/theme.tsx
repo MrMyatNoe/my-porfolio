@@ -19,6 +19,12 @@ const theme = extendTheme({
   },
   styles: {
     global: {
+      // Offsets native anchor-scroll targets (Header's nav links, Hero's
+      // #experience/#contact CTAs) by the sticky header's height, so a
+      // section's heading doesn't land underneath the 72px header.
+      html: {
+        scrollPaddingTop: '72px',
+      },
       body: {
         bg: 'bg.canvas',
         color: 'text.primary',
