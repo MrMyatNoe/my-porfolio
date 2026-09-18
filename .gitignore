@@ -1,9 +1,14 @@
 node_modules
 
+.superpowers
 .cache
 .env
 .vercel
 .output
+
+/test-results/
+/playwright-report/
+/blob-report/
 
 /build/
 /public/build

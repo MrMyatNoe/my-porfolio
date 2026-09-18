@@ -1,56 +1,40 @@
-import { Card } from '~/components/Card';
-import { EmptyCard } from '~/components/EmptyCard';
-import { LineWithDot } from '~/components/LineWithDot';
-import { milestones } from '~/data/career';
+import { Card } from '~/components/Card'
+import { milestones } from '~/data/career'
 
-import { Box, Center, Flex, Heading, useBreakpointValue } from '@chakra-ui/react';
+import { Box, Heading, VStack } from '@chakra-ui/react'
 
 export function Timeline() {
-  const isDesktop = useBreakpointValue({ base: false, md: true })
-  const isMobile = useBreakpointValue({ base: true, md: false })
   return (
-    <Flex
-      mt={['10', '12']}
-      mb={['10', '12']}
-      w="100%"
-      px="6"
-      py="5"
-      direction="column"
-      gap="4">
-      <Center>
-        <Heading fontSize={['30px', '40px']} size="lg" letterSpacing="2px">
-          Experience
-        </Heading>
-      </Center>
-      <Box p={{ base: 2, sm: 10 }}>
-        {milestones.map((milestone) => (
-          <Flex key={milestone.id} mb="10px">
-            {/* Desktop view(left card) */}
-            {isDesktop && milestone.id % 2 === 0 && (
-              <>
-                <EmptyCard />
-                <LineWithDot />
-                <Card {...milestone} />
-              </>
-            )}
-            {/* Mobile view */}
-            {isMobile && (
-              <>
-                <LineWithDot />
-                <Card {...milestone} />
-              </>
-            )}
-            {/* Desktop view(right card) */}
-            {isDesktop && milestone.id % 2 !== 0 && (
-              <>
-                <Card {...milestone} />
-                <LineWithDot />
-                <EmptyCard />
-              </>
-            )}
-          </Flex>
-        ))}
-      </Box>
-    </Flex>
+    <Box as="section" id="experience" px={[5, 8, 16]} py={[10, 10, 14]}>
+      <Heading as="h2" fontFamily="heading" fontSize={{ base: '24px', md: '30px' }}>
+        Professional experience
+      </Heading>
+      <VStack align="stretch" spacing={0} maxW="760px" mt={9}>
+        {milestones.map((milestone, index) => {
+          const isLast = index === milestones.length - 1
+          return (
+            <Box key={milestone.id} display="flex" gap={[4, 6]} pb={isLast ? 0 : 6}>
+              <Box w={[5, 6]} flexShrink={0} position="relative">
+                {!isLast && (
+                  <Box position="absolute" left="50%" top={0} bottom="-24px" w="1px" bg="border.default" />
+                )}
+                <Box
+                  position="relative"
+                  w={['10px', '12px']}
+                  h={['10px', '12px']}
+                  borderRadius="full"
+                  bg="text.accent"
+                  border="2px solid"
+                  borderColor="bg.canvas"
+                  mx="auto"
+                  mt={1}
+                />
+              </Box>
+              <Card {...milestone} />
+            </Box>
+          )
+        })}
+      </VStack>
+    </Box>
   )
 }
