@@ -1,18 +1,30 @@
-import { resumeData } from '~/data/resume';
+import { Contacts } from '~/components/Contacts'
+import { SocialLinks } from '~/components/SocialLinks'
+import { resumeData } from '~/data/resume'
 
-import { Box, Flex, HStack } from '@chakra-ui/react';
-
-import { SocialLinks } from './SocialLinks';
+import { Flex, Text, VStack } from '@chakra-ui/react'
 
 export function Footer() {
-  const { socialLinks } = resumeData.personalInfo
+  const { socialLinks, contacts, name } = resumeData.personalInfo
+
   return (
-    <Flex dir="row" align="center" justify="center" p={10}>
-      <Box flex={1}></Box>
-      <HStack flex={1} dir="row" align="center" justify="center" spacing={6}>
-        <SocialLinks links={socialLinks} />
-      </HStack>
-      <Box flex={1}></Box>
+    <Flex
+      as="footer"
+      id="contact"
+      direction={{ base: 'column', md: 'row' }}
+      align="center"
+      justify="space-between"
+      gap={6}
+      px={[5, 8, 16]}
+      py={10}
+    >
+      <VStack align={{ base: 'center', md: 'flex-start' }} spacing={1}>
+        <Contacts contacts={contacts} />
+      </VStack>
+      <SocialLinks links={socialLinks} />
+      <Text fontSize="12px" color="text.secondary">
+        © {new Date().getFullYear()} {name}
+      </Text>
     </Flex>
   )
 }
