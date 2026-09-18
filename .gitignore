@@ -6,6 +6,10 @@ node_modules
 .vercel
 .output
 
+/test-results/
+/playwright-report/
+/blob-report/
+
 /build/
 /public/build
 api/index.js
