@@ -36,7 +36,7 @@ export function Skill() {
       <Text fontSize="14px" color="text.secondary" mt={1}>
         Technologies I work with in production, grouped by where they sit in a system.
       </Text>
-      <SimpleGrid columns={{ base: 1, lg: 3 }} spacing={9} mt={8}>
+      <SimpleGrid columns={{ base: 1, lg: 3 }} spacing={9} mt={8} data-testid="skills-grid">
         {SKILL_CATEGORIES.map(({ label, icon: CategoryIcon, skills }) => (
           <Box key={label} borderLeft="2px solid" borderColor="text.accent" pl={4}>
             <HStack spacing={2} borderBottom="1px solid" borderColor="border.default" pb={2.5}>
