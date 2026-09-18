@@ -104,6 +104,7 @@ export function Header() {
           display={{ base: 'flex', md: 'none' }}
           borderTop="1px solid"
           borderColor="border.default"
+          data-testid="mobile-nav"
         >
           {NAV_LINKS.map((link) => (
             <Link key={link.href} href={link.href} fontSize="15px" color="text.primary" onClick={onToggle}>
