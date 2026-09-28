@@ -10,6 +10,7 @@ import {
   ScrollRestoration,
 } from '@remix-run/react'
 
+import { Background } from '~/components/Background'
 import theme from './theme'
 
 import type { MetaFunction } from '@remix-run/node'
@@ -38,6 +39,7 @@ export default function App() {
       <body>
         <ColorModeScript initialColorMode={theme.config.initialColorMode} />
         <ChakraProvider theme={theme}>
+          <Background />
           <Box
             as="a"
             href="#main-content"
