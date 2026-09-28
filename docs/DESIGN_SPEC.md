@@ -443,7 +443,9 @@ and AWS use Simple Icons brand marks (`react-icons/si`), the book entry
 uses a generic Lucide icon (`react-icons/lu`) since Kleppmann's book has no
 brand mark.
 
-**New: Testimonial** — new section, placed directly before Footer (last
+**New: Testimonial** *(deferred — out of scope for the rev-3 implementation
+plan; kept here as a recorded idea for a future pass)* — new section, placed
+directly before Footer (last
 in scroll order, least disruptive to existing nav anchors). Bracketed
 placeholder quote/author/role, styled per the mockup's `quote-box`
 (centered, bordered top/bottom rule, small avatar). Not added to Header's
