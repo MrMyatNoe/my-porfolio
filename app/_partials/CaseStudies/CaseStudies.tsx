@@ -4,6 +4,7 @@ import { LuLock } from 'react-icons/lu'
 import {
   Box,
   Button,
+  Container,
   Drawer,
   DrawerBody,
   DrawerCloseButton,
@@ -78,53 +79,55 @@ export function CaseStudies() {
   }
 
   return (
-    <Box as="section" id="case-studies" px={[5, 8, 16]} py={[10, 10, 14]} bg="bg.surface" borderY="1px solid" borderColor="border.default">
-      <Heading as="h2" fontFamily="heading" fontSize={{ base: '24px', md: '30px' }}>
-        Architecture case studies
-      </Heading>
-      <Text fontSize="14px" color="text.secondary" mt={1}>
-        Two systems I&apos;ve designed, built, and operate for employers.
-      </Text>
-      <SimpleGrid columns={{ base: 1, md: 2 }} spacing={6} mt={8}>
-        {CASE_STUDIES.map((study, index) => (
-          <Reveal key={study.key} delay={index * 0.08}>
-            <VStack align="stretch" spacing={0} border="1px solid" borderColor="border.default" borderRadius="12px" bg="bg.surfaceRaised" overflow="hidden">
-              <CaseStudyThumb nda={study.nda} />
-              <VStack align="flex-start" spacing={4} p={7}>
-                <Text fontFamily="mono" fontSize="12px" color="text.secondary">
-                  {study.meta}
-                </Text>
-                <Heading as="h3" fontFamily="heading" fontSize="18px">
-                  {study.title}
-                </Heading>
-                <Text fontSize="14px" lineHeight="1.6" color="text.secondary">
-                  {study.description}
-                </Text>
-                <Wrap spacing={2}>
-                  {study.stack.map((item) => (
-                    <WrapItem key={item}>
-                      <Tag fontFamily="mono" fontSize="11px" color="text.secondary" bg="transparent" border="1px solid" borderColor="border.default" borderRadius="full">
-                        {item}
-                      </Tag>
-                    </WrapItem>
-                  ))}
-                </Wrap>
-                <HStack spacing={3} pt={1}>
-                  <Button size="sm" bg="text.accent" color="bg.canvas" _hover={{ opacity: 0.9 }} borderRadius="8px" fontSize="13px" onClick={() => openStudy(study.key)}>
-                    View solution
-                  </Button>
-                  {study.nda && (
-                    <HStack spacing={1.5} border="1px dashed" borderColor="border.default" color="text.secondary" borderRadius="8px" px={3} py={1.5} fontSize="12px">
-                      <LuLock size={12} />
-                      <Text>Private</Text>
-                    </HStack>
-                  )}
-                </HStack>
+    <Box as="section" id="case-studies" py={[10, 10, 14]} bg="bg.surface" borderY="1px solid" borderColor="border.default">
+      <Container maxW="1080px" px={[5, 8, 16]} data-testid="content-container">
+        <Heading as="h2" fontFamily="heading" fontSize={{ base: '24px', md: '30px' }}>
+          Architecture case studies
+        </Heading>
+        <Text fontSize="14px" color="text.secondary" mt={1}>
+          Two systems I&apos;ve designed, built, and operate for employers.
+        </Text>
+        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={6} mt={8}>
+          {CASE_STUDIES.map((study, index) => (
+            <Reveal key={study.key} delay={index * 0.08}>
+              <VStack align="stretch" spacing={0} border="1px solid" borderColor="border.default" borderRadius="12px" bg="bg.surfaceRaised" overflow="hidden">
+                <CaseStudyThumb nda={study.nda} />
+                <VStack align="flex-start" spacing={4} p={7}>
+                  <Text fontFamily="mono" fontSize="12px" color="text.secondary">
+                    {study.meta}
+                  </Text>
+                  <Heading as="h3" fontFamily="heading" fontSize="18px">
+                    {study.title}
+                  </Heading>
+                  <Text fontSize="14px" lineHeight="1.6" color="text.secondary">
+                    {study.description}
+                  </Text>
+                  <Wrap spacing={2}>
+                    {study.stack.map((item) => (
+                      <WrapItem key={item}>
+                        <Tag fontFamily="mono" fontSize="11px" color="text.secondary" bg="transparent" border="1px solid" borderColor="border.default" borderRadius="full">
+                          {item}
+                        </Tag>
+                      </WrapItem>
+                    ))}
+                  </Wrap>
+                  <HStack spacing={3} pt={1}>
+                    <Button size="sm" bg="text.accent" color="bg.canvas" _hover={{ opacity: 0.9 }} borderRadius="8px" fontSize="13px" onClick={() => openStudy(study.key)}>
+                      View solution
+                    </Button>
+                    {study.nda && (
+                      <HStack spacing={1.5} border="1px dashed" borderColor="border.default" color="text.secondary" borderRadius="8px" px={3} py={1.5} fontSize="12px">
+                        <LuLock size={12} />
+                        <Text>Private</Text>
+                      </HStack>
+                    )}
+                  </HStack>
+                </VStack>
               </VStack>
-            </VStack>
-          </Reveal>
-        ))}
-      </SimpleGrid>
+            </Reveal>
+          ))}
+        </SimpleGrid>
+      </Container>
 
       <Drawer isOpen={isOpen} placement="right" onClose={onClose} size="sm">
         <DrawerOverlay />

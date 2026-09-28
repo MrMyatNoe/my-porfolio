@@ -3,6 +3,7 @@ import { resumeData } from '~/data/resume'
 
 import {
   Box,
+  Container,
   Flex,
   HStack,
   IconButton,
@@ -41,78 +42,79 @@ export function Header() {
       borderColor="border.default"
       backdropFilter="blur(8px)"
     >
-      <Flex align="center" justify="space-between" px={[5, 8]} h="72px">
-        <HStack spacing={3}>
-          <Flex
-            w="36px"
-            h="36px"
-            border="1px solid"
-            borderColor="text.accent"
-            borderRadius="8px"
-            align="center"
-            justify="center"
-            fontFamily="mono"
-            fontSize="12px"
-            color="text.accent"
+      <Container maxW="1080px" px={[5, 8]} data-testid="content-container">
+        <Flex align="center" justify="space-between" h="72px">
+          <HStack spacing={3}>
+            <Flex
+              w="36px"
+              h="36px"
+              border="1px solid"
+              borderColor="text.accent"
+              borderRadius="8px"
+              align="center"
+              justify="center"
+              fontFamily="mono"
+              fontSize="12px"
+              color="text.accent"
+            >
+              {initials}
+            </Flex>
+            <Box fontFamily="heading" fontWeight="600" fontSize="17px">
+              {name}
+            </Box>
+          </HStack>
+
+          <HStack spacing={8} display={{ base: 'none', md: 'flex' }} data-testid="desktop-nav">
+            {NAV_LINKS.map((link) => (
+              <Link key={link.href} href={link.href} fontSize="14px" color="text.secondary">
+                {link.label}
+              </Link>
+            ))}
+          </HStack>
+
+          <HStack spacing={2}>
+            <IconButton
+              aria-label="Toggle color theme"
+              icon={colorMode === 'light' ? <LuMoon size={16} /> : <LuSun size={16} />}
+              onClick={toggleColorMode}
+              variant="outline"
+              borderColor="border.default"
+              bg="bg.surfaceRaised"
+              size="sm"
+              borderRadius="8px"
+            />
+            <IconButton
+              aria-label="Toggle menu"
+              icon={isOpen ? <LuX size={16} /> : <LuMenu size={16} />}
+              onClick={onToggle}
+              variant="outline"
+              borderColor="border.default"
+              bg="bg.surfaceRaised"
+              size="sm"
+              borderRadius="8px"
+              display={{ base: 'inline-flex', md: 'none' }}
+            />
+          </HStack>
+        </Flex>
+
+        {isOpen && (
+          <VStack
+            align="stretch"
+            spacing={4}
+            pb={5}
+            display={{ base: 'flex', md: 'none' }}
+            borderTop="1px solid"
+            borderColor="border.default"
+            data-testid="mobile-nav"
           >
-            {initials}
-          </Flex>
-          <Box fontFamily="heading" fontWeight="600" fontSize="17px">
-            {name}
-          </Box>
-        </HStack>
-
-        <HStack spacing={8} display={{ base: 'none', md: 'flex' }} data-testid="desktop-nav">
-          {NAV_LINKS.map((link) => (
-            <Link key={link.href} href={link.href} fontSize="14px" color="text.secondary">
-              {link.label}
-            </Link>
-          ))}
-        </HStack>
-
-        <HStack spacing={2}>
-          <IconButton
-            aria-label="Toggle color theme"
-            icon={colorMode === 'light' ? <LuMoon size={16} /> : <LuSun size={16} />}
-            onClick={toggleColorMode}
-            variant="outline"
-            borderColor="border.default"
-            bg="bg.surfaceRaised"
-            size="sm"
-            borderRadius="8px"
-          />
-          <IconButton
-            aria-label="Toggle menu"
-            icon={isOpen ? <LuX size={16} /> : <LuMenu size={16} />}
-            onClick={onToggle}
-            variant="outline"
-            borderColor="border.default"
-            bg="bg.surfaceRaised"
-            size="sm"
-            borderRadius="8px"
-            display={{ base: 'inline-flex', md: 'none' }}
-          />
-        </HStack>
-      </Flex>
-
-      {isOpen && (
-        <VStack
-          align="stretch"
-          spacing={4}
-          px={5}
-          pb={5}
-          display={{ base: 'flex', md: 'none' }}
-          borderTop="1px solid"
-          borderColor="border.default"
-          data-testid="mobile-nav"
-        >
-          {NAV_LINKS.map((link) => (
-            <Link key={link.href} href={link.href} fontSize="15px" color="text.primary" onClick={onToggle}>
-              {link.label}
-            </Link>
-          ))}
-        </VStack>
-      )}
+            {NAV_LINKS.map((link) => (
+              <Link key={link.href} href={link.href} fontSize="15px" color="text.primary" onClick={onToggle}>
+                {link.label}
+              </Link>
+            ))}
+          </VStack>
+        )}
+      </Container>
     </Box>
   )
 }
