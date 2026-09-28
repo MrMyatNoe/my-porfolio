@@ -98,11 +98,14 @@ const theme = extendTheme({
       'text.secondary': { default: '#51636D', _dark: '#93A5B1' },
       'text.accent': { default: '#0E8074', _dark: '#2FB8AE' },
       'text.accentPurple': { default: '#6B46C1', _dark: '#B39DFF' },
-      'text.accentAmber': { default: '#B7791F', _dark: '#FDBA5C' },
+      'text.accentAmber': { default: '#975A16', _dark: '#FDBA5C' },
     },
   },
   styles: {
     global: {
+      // Offsets native anchor-scroll targets (Header's nav links, Hero's
+      // #experience/#contact CTAs) by the sticky header's height, so a
+      // section's heading doesn't land underneath the 72px header.
       html: {
         scrollPaddingTop: '72px',
       },
@@ -377,7 +380,7 @@ test.describe('Skills accent rotation, pill styling, and reduced motion', () => 
   test('skill categories are visible immediately when reduced motion is requested', async ({ page }) => {
     await page.emulateMedia({ reducedMotion: 'reduce' })
     await page.goto('/')
-    await expect(page.getByTestId('skill-category').first()).toBeVisible()
+    await expect(page.getByTestId('skill-category').first()).toHaveCSS('opacity', '1')
   })
 })
 ```
@@ -391,10 +394,7 @@ Expected: FAIL — `skill-category` testid doesn't exist yet, so all three tests
 
 ```tsx
 import type { ReactNode } from 'react'
-import { chakra } from '@chakra-ui/react'
 import { motion, useReducedMotion } from 'framer-motion'
-
-const MotionBox = chakra(motion.div)
 
 interface RevealProps {
   children: ReactNode
@@ -409,14 +409,14 @@ export function Reveal({ children, delay = 0 }: RevealProps) {
   }
 
   return (
-    <MotionBox
+    <motion.div
       initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.5, delay }}
     >
       {children}
-    </MotionBox>
+    </motion.div>
   )
 }
 ```
@@ -686,7 +686,7 @@ test.describe('Professional experience git-graph timeline', () => {
     await expect(timeline.getByText('#a3f9c2 · current')).toBeVisible()
     await expect(
       timeline.getByText(
-        'Backend Developer on the LCUWWB insurance platform project, working within a microservices architecture built with Spring Boot and Kafka'
+        'Working on the LCUWWB insurance platform project, within a microservices architecture built with Spring Boot and Kafka'
       )
     ).toBeVisible()
   })
@@ -727,7 +727,7 @@ export const milestones: Milestone[] = [
     role: 'Senior Backend Developer',
     date: 'July 2022 - Present',
     bullets: [
-      'Backend Developer on the LCUWWB insurance platform project, working within a microservices architecture built with Spring Boot and Kafka',
+      'Working on the LCUWWB insurance platform project, within a microservices architecture built with Spring Boot and Kafka',
       "Wrote and maintained contract tests and Playwright tests as part of the team's testing practice",
       'Worked within automated DevSecOps pipelines using GitHub Actions, following Agile methodology',
     ],
@@ -778,9 +778,9 @@ export const milestones: Milestone[] = [
     role: 'Fullstack Developer',
     date: 'June 2018 - December 2020',
     bullets: [
-      'Built and maintained POS, retail, accounting, and clinic management systems in Java, GWT, and Spring Boot',
-      "Shipped two mobile applications (Clinic App, Privilege App) as part of the platform's mobile expansion",
-      'Wrote stored procedures and Jasper reports for operational reporting',
+      'Added features to and maintained an existing POS, retail, accounting, and clinic management system, built with Java, GWT, and Spring Boot',
+      'Developed two full-stack mobile applications: Clinic App and Privilege App',
+      'Wrote stored procedures and Jasper reports',
     ],
     badges: ['Java', 'Spring Boot', 'GWT', 'MSSQL'],
   },
@@ -792,7 +792,7 @@ export const milestones: Milestone[] = [
     date: 'March 2017 - August 2017',
     bullets: [
       'Added features to and maintained an existing J2EE framework-based application',
-      'Worked with Oracle Database for data persistence in a production maintenance role',
+      'Worked with Oracle Database in a maintenance role',
     ],
     badges: ['Java', 'J2EE', 'Oracle DB'],
   },
@@ -1092,7 +1092,7 @@ const CASE_STUDIES: CaseStudy[] = [
     problem:
       "The e-commerce platform's stack needed to change across its backend, frontend, and full-stack work over its lifetime.",
     solution:
-      'Carried the platform through four stack phases — Spring Boot/Hibernate, then NestJS/Prisma, then a Remix + Chakra UI frontend — working across backend, frontend, and full-stack roles as needs changed.',
+      'Carried the platform through successive stack phases — Spring Boot/Hibernate, then NestJS/Prisma, then a Remix + Chakra UI frontend — working across backend, frontend, and full-stack roles as needs changed.',
     impact: 'The platform continued shipping across each stack transition.',
   },
 ]

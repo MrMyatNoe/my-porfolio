@@ -499,9 +499,14 @@ a mentoring bullet for Nan Yan — that were not in `career.ts` and were never
 vetted for public, NDA-conscious accuracy. That draft never shipped; this is
 the corrected version.
 
+*(Revised again post-final-review — the whole-branch review caught that
+entries 5–6 below still carried untraced specifics the Task 5 fix round
+missed, and that entry 1's bullet 1 duplicated the role label. Both are
+corrected below.)*
+
 1. **Allianz Technology Thailand** (Jul 2022 – Present)
-   - Backend Developer on the LCUWWB insurance platform project, working
-     within a microservices architecture built with Spring Boot and Kafka
+   - Working on the LCUWWB insurance platform project, within a
+     microservices architecture built with Spring Boot and Kafka
    - Wrote and maintained contract tests and Playwright tests as part of
      the team's testing practice
    - Worked within automated DevSecOps pipelines using GitHub Actions,
@@ -535,18 +540,17 @@ the corrected version.
      `CaseStudies.tsx`'s existing stack tags for this role)
 
 5. **MBC Software Development, Myanmar** (Jun 2018 – Dec 2020)
-   - Built and maintained POS, retail, accounting, and clinic management
-     systems in Java, GWT, and Spring Boot
-   - Shipped two mobile applications (Clinic App, Privilege App) as part of
-     the platform's mobile expansion
-   - Wrote stored procedures and Jasper reports for operational reporting
+   - Added features to and maintained an existing POS, retail, accounting,
+     and clinic management system, built with Java, GWT, and Spring Boot
+   - Developed two full-stack mobile applications: Clinic App and
+     Privilege App
+   - Wrote stored procedures and Jasper reports
    - Badges: `Java`, `Spring Boot`, `GWT`, `MSSQL`
 
 6. **FPT Software, Myanmar** (Mar 2017 – Aug 2017)
    - Added features to and maintained an existing J2EE framework-based
      application
-   - Worked with Oracle Database for data persistence in a production
-     maintenance role
+   - Worked with Oracle Database in a maintenance role
    - Badges: `Java`, `J2EE`, `Oracle DB`
 
 ## R3.5 Visual reference (rev 3)
