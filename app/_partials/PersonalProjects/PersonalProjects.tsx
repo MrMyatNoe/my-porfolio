@@ -1,4 +1,4 @@
-import { Box, Container, Flex, Heading, HStack, Tag, Text, VStack, Wrap, WrapItem } from '@chakra-ui/react'
+import { Box, Container, Flex, Heading, Tag, Text, VStack, Wrap, WrapItem } from '@chakra-ui/react'
 
 const STACK = ['flutter', 'firebase', 'admob', 'next.js', 'chakra-ui']
 
@@ -47,14 +47,6 @@ export function PersonalProjects() {
                 ))}
               </Wrap>
             </VStack>
-            <HStack spacing={4} flexShrink={0} align="flex-start">
-              <Flex w="72px" h="72px" borderRadius="12px" bg="bg.surface" align="center" justify="center" fontFamily="heading" fontSize="24px" fontWeight="700" color="text.accent">
-                A
-              </Flex>
-              <Flex w="72px" h="72px" borderRadius="12px" bg="bg.surface" align="center" justify="center" fontFamily="heading" fontSize="24px" fontWeight="700" color="text.accent">
-                M
-              </Flex>
-            </HStack>
           </Flex>
         </VStack>
       </Container>

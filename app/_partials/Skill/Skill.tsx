@@ -32,7 +32,7 @@ const ACCENTS = ['text.accent', 'text.accentPurple', 'text.accentAmber'] as cons
 
 export function Skill() {
   return (
-    <Box as="section" id="skills" py={[10, 10, 14]} bg="bg.surface" borderY="1px solid" borderColor="border.default">
+    <Box as="section" id="skills" py={[10, 10, 14]} bg="bg.surfaceSoft" borderY="1px solid" borderColor="border.default">
       <Container maxW="1080px" px={[5, 8, 16]} data-testid="content-container">
         <Heading as="h2" fontFamily="heading" fontSize={{ base: '24px', md: '30px' }}>
           Skills

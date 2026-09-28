@@ -14,6 +14,7 @@ const theme = extendTheme({
     colors: {
       'bg.canvas': { default: '#F5F7F8', _dark: '#0A1420' },
       'bg.surface': { default: '#FFFFFF', _dark: '#111F33' },
+      'bg.surfaceSoft': { default: '#F9FAFB', _dark: '#0D1A2B' },
       'bg.surfaceRaised': { default: '#EEF2F3', _dark: '#16283F' },
       'border.default': { default: '#DCE3E7', _dark: '#223350' },
       'text.primary': { default: '#132029', _dark: '#E7EDF0' },

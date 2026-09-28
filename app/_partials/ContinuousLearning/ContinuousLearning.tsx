@@ -40,7 +40,7 @@ const LEARNING_ENTRIES: LearningEntry[] = [
 
 export function ContinuousLearning() {
   return (
-    <Box as="section" id="learning" py={[10, 10, 14]} bg="bg.surface" borderY="1px solid" borderColor="border.default">
+    <Box as="section" id="learning" py={[10, 10, 14]} bg="bg.surfaceSoft" borderY="1px solid" borderColor="border.default">
       <Container maxW="1080px" px={[5, 8, 16]} data-testid="content-container">
         <Heading as="h2" fontFamily="heading" fontSize={{ base: '24px', md: '30px' }}>
           Continuous learning
