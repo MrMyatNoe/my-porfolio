@@ -330,7 +330,7 @@ check before the narrative deep-dive.
   link) and a static `public/og-image.png` (1200×630, referenced by
   `root.tsx`'s new `og:image` meta tag).
 
-## 4. Visual reference
+## 4. Visual reference (rev 2)
 
 The living mockup (desktop + mobile artboards, real content, working
 light/dark toggle, the hero's load animation) is the visual source of truth
@@ -338,3 +338,213 @@ for anything this doc describes only in prose. Check it before implementing
 any section — it's been through several review passes and reflects the
 current state of every decision above, including ones made after this doc
 was first written.
+
+---
+
+# Revision 3 — Dark-navy / multi-accent restyle
+
+Grounded in a full read of the live implementation of rev 2 (all sections
+present and matching §1–§2 above) plus `docs/tmn-portfolio-concept.html`, a
+static HTML/CSS mockup the user built separately exploring a further
+aesthetic direction: fixed dark-navy theme, a three-color accent system
+(teal/purple/amber), heavier monospace typographic voice, a git-commit-
+styled experience timeline, a tag-cloud skills layout, and a slide-out
+drawer for case-study detail. This revision reconciles that mockup's ideas
+with the live rev-2 codebase — where they conflict, the decisions below
+(made with the user, section by section) win; where the mockup is silent on
+implementation, existing rev-2 patterns and dependencies (Chakra UI,
+framer-motion) are preferred over the mockup's hand-rolled vanilla JS/CSS.
+
+Spec only — no implementation yet.
+
+## R3.1 Cross-cutting system
+
+**Color tokens.** Extend `theme.tsx`'s semantic tokens with two more accent
+colors alongside the existing `text.accent` (teal): `text.accentPurple` and
+`text.accentAmber`, each with light/dark pairs built from Chakra's existing
+palette (no new raw hex, same rule rev 2 established). These are
+**decorative only** — the rev-2 interactive-color rule (§1 above) is
+unchanged: solid teal fill = the one primary action per view, teal
+border+text = secondary actions/links, neutral = non-actionable. Purple and
+amber never mark something as clickable; they're used for categorization
+(alternating skill-category accents, case-study thumbnail palettes) and
+status (amber for "in progress"/NDA badges).
+
+**Dark-as-default, toggle stays.** `theme.tsx` gets
+`config: { initialColorMode: 'dark', useSystemColorMode: false }`. Dark-mode
+values of `bg.canvas`/`bg.surface`/`bg.surfaceRaised`/`border.default` move
+to the mockup's navy scale (`#0A1420`/`#111F33`/`#16283F`/`#223350`);
+light-mode values stay close to their current rev-2 values so the existing
+toggle keeps working in both directions.
+
+**Typography.** `theme.fonts.body` switches from `'IBM Plex Sans'` to
+`'Inter', sans-serif`. Add Inter to the Google Fonts `<link>` in
+`root.tsx`; Space Grotesk (heading) and IBM Plex Mono (mono) links are
+already correct and unchanged.
+
+**Ambient background.** A fixed, `pointer-events: none` dot-grid + radial
+color-glow layer, added once (e.g. a small `Background` component rendered
+in `root.tsx`), sitting behind all page content — not reimplemented per
+section.
+
+**Scroll-reveal motion.** The mockup hand-rolls `IntersectionObserver` +
+CSS reveal classes. Use `framer-motion`'s `whileInView` + `useReducedMotion`
+instead — same visual effect (cards/tags/timeline entries fade/slide in on
+scroll), already a project dependency, and reduced-motion handling comes
+from the library rather than a bespoke branch.
+
+## R3.2 Per-section changes
+
+**Header** — retoken only (new dark palette). Structure, nav links, color-
+mode toggle, and mobile disclosure are unchanged.
+
+**Hero** — retoken only. `HeroDiagram`'s connector lines/nodes/pills move
+from teal-only to teal/purple. Structure and existing load animation
+unchanged.
+
+**Skills** — keep the current 7-category structure and real per-category
+tech tags (not the mockup's flat list of broad competency themes — that
+would drop real technology detail the categorized version has). Adopt the
+mockup's pill *visual* language instead: each tag becomes a rounded pill,
+category left-border/hover-glow rotates teal → purple → amber across the 7
+categories, tags get a scroll-reveal. Grouping and tag content unchanged.
+
+**Professional Experience (Timeline)** — full git-graph restyle: left
+spine with glowing commit dots, each of the 6 roles gets a short cosmetic
+mono "hash" (deterministic per role, not a real commit reference — texture
+only), role/company header, date, 2–3 rewritten achievement bullets
+(`+` marker) replacing today's single-line description + sprawling
+category-tag dump, and a trimmed badge row (3–4 most relevant technologies
+per role, drawn from that role's existing `categories`). See R3.4 for the
+drafted bullet/badge content — restructured phrasing of existing data, no
+new facts.
+
+**Architecture Case Studies** — keep today's 2 cards (Allianz, Nan Yan) and
+their existing copy exactly. Add: a generic decorative SVG thumbnail
+diagram per card (boxes/arrows, no real system topology), an "NDA
+Protected" badge + locked "Private" pill on the Allianz card only (Nan Yan
+gets no lock — it's already presented without a source link today), and a
+slide-out drawer per card. The drawer is populated with the **same level of
+detail already on the card** (Problem/Solution/Stack/Impact reformatted
+from existing copy) — no new architecture specifics beyond what's live
+today.
+
+**Personal Projects** — retoken only (card surface, glyph tiles, tags move
+to the new palette). No structural or content change.
+
+**Continuous Learning** — replace the two bracketed placeholders with 3
+real entries the user confirmed as accurate: Kubernetes for Developers
+(CKAD track, Udemy, in progress), AWS Solutions Architect – Associate prep
+(LinkedIn Learning, in progress), Designing Data-Intensive Applications
+(Kleppmann, reading). Each renders as a `learn-card` (icon tile, cert name,
+amber status chip, source chip, one-line description). Grid layout replaces
+today's `Wrap`. Icons follow rev 2's icon-system rule (§1 above): Kubernetes
+and AWS use Simple Icons brand marks (`react-icons/si`), the book entry
+uses a generic Lucide icon (`react-icons/lu`) since Kleppmann's book has no
+brand mark.
+
+**New: Testimonial** — new section, placed directly before Footer (last
+in scroll order, least disruptive to existing nav anchors). Bracketed
+placeholder quote/author/role, styled per the mockup's `quote-box`
+(centered, bordered top/bottom rule, small avatar). Not added to Header's
+nav links — no real content yet to justify a nav entry; revisit once a real
+quote exists.
+
+**Footer** — retoken only, gains the same ambient glow treatment as other
+section boundaries. Structure and social links unchanged.
+
+## R3.3 New interaction patterns & components
+
+**Case-study drawer** — implemented with Chakra's own `Drawer` component
+(already a dependency; ships focus-trap, `Escape`-to-close, and
+`aria-modal` handling) rather than the mockup's hand-rolled vanilla-JS
+drawer. Same visual result — slide-in from the right, overlay, close
+button — with less new code and consistency with how the rest of the app
+already uses Chakra.
+
+**NDA badge / locked button** — driven by an `nda: boolean` flag on the
+Allianz case-study entry only; purely presentational (amber badge, dashed
+"Private" pill in place of a source link).
+
+**Data shape changes** (mechanical — restructuring existing data, no new
+facts):
+- `data/career.ts`: each milestone gains `bullets: string[]` (2–3 lines,
+  see R3.4) and a trimmed `badges: string[]` (3–4 items), replacing the
+  current `categories: string[]` dump.
+- New `caseStudyDetails` data (problem/solution/stackChoice/impact) per
+  card, for the drawer — mirrors each card's existing copy.
+- New `TESTIMONIAL_PLACEHOLDER` data (bracketed quote/name/role).
+- `ContinuousLearning`'s placeholder array replaced with the 3 confirmed
+  real entries above.
+
+**Constraint carried forward.** Timeline's `data-testid="experience-
+timeline"` and centered `maxW` layout (fixed earlier in this project) must
+survive the git-graph rework — keep the testid and centering; only what's
+inside the `VStack` changes.
+
+## R3.4 Drafted Timeline bullet content (for review)
+
+Restructured from each role's existing `description` + `categories` in
+`data/career.ts`. Allianz and Nan Yan bullets are kept consistent with the
+wording already live in `CaseStudies.tsx` rather than the mockup's slightly
+different phrasing, so the two sections don't describe the same roles two
+different ways.
+
+1. **Allianz Technology Thailand** (Jul 2022 – Present)
+   - Architected and implemented high-throughput microservices within an
+     event-driven architecture using Spring Boot and Kafka
+   - Led system design and integration of Kafka message brokers to handle
+     high-volume data streaming for underwriting engines
+   - Established automated DevSecOps pipelines via GitHub Actions using
+     contract and Playwright testing
+   - Badges: `Java`, `Spring Boot`, `Kafka`, `Microservices`
+
+2. **Personal Fullstack Mobile & Web Project** (Dec 2021 – Present)
+   - Built and shipped a Flutter mobile app with a companion Next.js/Chakra
+     UI admin console, backed by Firebase for auth, data, and real-time sync
+   - Owned the full product lifecycle solo — design, development, and
+     AdMob monetization
+   - Automated build and release checks with GitHub Actions
+   - Badges: `Flutter`, `Firebase`, `Next.js`, `Chakra UI`
+
+3. **Freelance Frontend Developer, IHRP** (Dec 2021 – Jan 2022)
+   - Built the blog frontend in Next.js and Chakra UI, consuming a GraphQL
+     API for content
+   - Delivered the engagement independently as a freelance contractor on a
+     fixed scope
+   - Badges: `Next.js`, `Chakra UI`, `GraphQL`, `Freelance`
+
+4. **Nanyan Platform, Myanmar** (Oct 2020 – Apr 2022)
+   - Carried a multi-phase e-commerce and retail platform through four
+     stack iterations — Spring Boot/Hibernate, then NestJS/Prisma, then a
+     Remix + Chakra UI frontend
+   - Worked across backend, frontend, and full-stack roles as the
+     platform's needs shifted phase to phase
+   - Mentored junior developers and helped establish database-modeling and
+     API-integration practices
+   - Badges: `Spring Boot`, `NestJS`, `Prisma`, `Remix` (matches
+     `CaseStudies.tsx`'s existing stack tags for this role)
+
+5. **MBC Software Development, Myanmar** (Jun 2018 – Dec 2020)
+   - Built and maintained POS, retail, accounting, and clinic management
+     systems in Java, GWT, and Spring Boot
+   - Shipped two mobile applications (Clinic App, Privilege App) as part of
+     the platform's mobile expansion
+   - Wrote stored procedures and Jasper reports for operational reporting
+   - Badges: `Java`, `Spring Boot`, `GWT`, `MSSQL`
+
+6. **FPT Software, Myanmar** (Mar 2017 – Aug 2017)
+   - Added features to and maintained an existing J2EE framework-based
+     application
+   - Worked with Oracle Database for data persistence in a production
+     maintenance role
+   - Badges: `Java`, `J2EE`, `Oracle DB`
+
+## R3.5 Visual reference (rev 3)
+
+`docs/tmn-portfolio-concept.html` is the visual source of truth for the
+elements adopted in this revision (color system, git-graph timeline, tag-
+cloud pill styling, drawer, dot-grid background, learn-cards, testimonial).
+Where it conflicts with a decision recorded above (e.g. flat skills list,
+fuller drawer copy, Nan Yan badge set), the decision above wins — the
+mockup was a starting exploration, not the final word on content.
