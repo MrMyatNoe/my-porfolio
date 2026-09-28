@@ -369,7 +369,7 @@ test.describe('Skills accent rotation, pill styling, and reduced motion', () => 
 
   test('skill tags render as fully rounded pills', async ({ page }) => {
     await page.goto('/')
-    const kafkaTag = page.getByText('kafka', { exact: true })
+    const kafkaTag = page.getByTestId('skills-grid').getByText('kafka', { exact: true })
     const borderRadius = await kafkaTag.evaluate((el) => getComputedStyle(el).borderRadius)
     expect(borderRadius).toBe('9999px')
   })
@@ -1256,7 +1256,7 @@ test.describe('Continuous learning content', () => {
     await expect(section.getByText('AWS Solutions Architect – Associate Prep')).toBeVisible()
     await expect(section.getByText('Designing Data-Intensive Applications')).toBeVisible()
     await expect(section.getByText('In Progress')).toHaveCount(2)
-    await expect(section.getByText('Reading')).toHaveCount(1)
+    await expect(section.getByText('Reading', { exact: true })).toHaveCount(1)
     await expect(section.getByText('Udemy')).toBeVisible()
     await expect(section.getByText('LinkedIn Learning')).toBeVisible()
     await expect(section.getByText('Book — Kleppmann')).toBeVisible()
