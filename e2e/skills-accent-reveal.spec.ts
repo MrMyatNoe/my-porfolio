@@ -24,6 +24,6 @@ test.describe('Skills accent rotation, pill styling, and reduced motion', () => 
   test('skill categories are visible immediately when reduced motion is requested', async ({ page }) => {
     await page.emulateMedia({ reducedMotion: 'reduce' })
     await page.goto('/')
-    await expect(page.getByTestId('skill-category').first()).toBeVisible()
+    await expect(page.getByTestId('skill-category').first()).toHaveCSS('opacity', '1')
   })
 })

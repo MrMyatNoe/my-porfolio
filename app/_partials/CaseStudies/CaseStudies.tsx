@@ -62,7 +62,7 @@ const CASE_STUDIES: CaseStudy[] = [
     problem:
       "The e-commerce platform's stack needed to change across its backend, frontend, and full-stack work over its lifetime.",
     solution:
-      'Carried the platform through four stack phases — Spring Boot/Hibernate, then NestJS/Prisma, then a Remix + Chakra UI frontend — working across backend, frontend, and full-stack roles as needs changed.',
+      'Carried the platform through successive stack phases — Spring Boot/Hibernate, then NestJS/Prisma, then a Remix + Chakra UI frontend — working across backend, frontend, and full-stack roles as needs changed.',
     impact: 'The platform continued shipping across each stack transition.',
   },
 ]

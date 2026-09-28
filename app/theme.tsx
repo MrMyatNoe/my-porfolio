@@ -20,11 +20,14 @@ const theme = extendTheme({
       'text.secondary': { default: '#51636D', _dark: '#93A5B1' },
       'text.accent': { default: '#0E8074', _dark: '#2FB8AE' },
       'text.accentPurple': { default: '#6B46C1', _dark: '#B39DFF' },
-      'text.accentAmber': { default: '#B7791F', _dark: '#FDBA5C' },
+      'text.accentAmber': { default: '#975A16', _dark: '#FDBA5C' },
     },
   },
   styles: {
     global: {
+      // Offsets native anchor-scroll targets (Header's nav links, Hero's
+      // #experience/#contact CTAs) by the sticky header's height, so a
+      // section's heading doesn't land underneath the 72px header.
       html: {
         scrollPaddingTop: '72px',
       },
