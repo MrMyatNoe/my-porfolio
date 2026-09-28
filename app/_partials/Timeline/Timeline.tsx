@@ -9,7 +9,7 @@ export function Timeline() {
       <Heading as="h2" fontFamily="heading" fontSize={{ base: '24px', md: '30px' }}>
         Professional experience
       </Heading>
-      <VStack align="stretch" spacing={0} maxW="760px" mt={9}>
+      <VStack data-testid="experience-timeline" align="stretch" spacing={0} maxW="760px" mt={9} mx="auto">
         {milestones.map((milestone, index) => {
           const isLast = index === milestones.length - 1
           return (
