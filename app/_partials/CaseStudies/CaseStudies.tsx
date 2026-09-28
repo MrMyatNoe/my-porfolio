@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { LuLock } from 'react-icons/lu'
+import { CaseStudyThumb } from '~/components/CaseStudyThumb'
+import { Reveal } from '~/components/Reveal'
 
 import {
   Box,
@@ -21,9 +23,6 @@ import {
   Wrap,
   WrapItem,
 } from '@chakra-ui/react'
-
-import { CaseStudyThumb } from '~/components/CaseStudyThumb'
-import { Reveal } from '~/components/Reveal'
 
 interface CaseStudy {
   key: string
@@ -50,7 +49,8 @@ const CASE_STUDIES: CaseStudy[] = [
       'The underwriting workbench was a single backend monolith shared across underwriting and claims teams.',
     solution:
       "Took over backend ownership and split the monolith into contract-tested microservices, so each team could ship independently without breaking the other's workflow.",
-    impact: "Underwriting and claims teams can now ship independently, without one team's release blocking the other.",
+    impact:
+      "Underwriting and claims teams can now ship independently, without one team's release blocking the other.",
   },
   {
     key: 'mobileweb',
@@ -79,9 +79,13 @@ export function CaseStudies() {
   }
 
   return (
-    <Box as="section" id="case-studies" py={[10, 10, 14]} bg="bg.surface" borderY="1px solid" borderColor="border.default">
+    <Box as="section" id="case-studies" py={[10, 10, 14]}>
       <Container maxW="1080px" px={[5, 8, 16]} data-testid="content-container">
-        <Heading as="h2" fontFamily="heading" fontSize={{ base: '24px', md: '30px' }}>
+        <Heading
+          as="h2"
+          fontFamily="heading"
+          fontSize={{ base: '24px', md: '30px' }}
+        >
           Architecture case studies
         </Heading>
         <Text fontSize="14px" color="text.secondary" mt={1}>
@@ -90,10 +94,22 @@ export function CaseStudies() {
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={6} mt={8}>
           {CASE_STUDIES.map((study, index) => (
             <Reveal key={study.key} delay={index * 0.08}>
-              <VStack align="stretch" spacing={0} border="1px solid" borderColor="border.default" borderRadius="12px" bg="bg.surfaceRaised" overflow="hidden">
+              <VStack
+                align="stretch"
+                spacing={0}
+                border="1px solid"
+                borderColor="border.default"
+                borderRadius="12px"
+                bg="bg.surfaceRaised"
+                overflow="hidden"
+              >
                 <CaseStudyThumb nda={study.nda} />
                 <VStack align="flex-start" spacing={4} p={7}>
-                  <Text fontFamily="mono" fontSize="12px" color="text.secondary">
+                  <Text
+                    fontFamily="mono"
+                    fontSize="12px"
+                    color="text.secondary"
+                  >
                     {study.meta}
                   </Text>
                   <Heading as="h3" fontFamily="heading" fontSize="18px">
@@ -105,18 +121,43 @@ export function CaseStudies() {
                   <Wrap spacing={2}>
                     {study.stack.map((item) => (
                       <WrapItem key={item}>
-                        <Tag fontFamily="mono" fontSize="11px" color="text.secondary" bg="transparent" border="1px solid" borderColor="border.default" borderRadius="full">
+                        <Tag
+                          fontFamily="mono"
+                          fontSize="11px"
+                          color="text.secondary"
+                          bg="transparent"
+                          border="1px solid"
+                          borderColor="border.default"
+                          borderRadius="full"
+                        >
                           {item}
                         </Tag>
                       </WrapItem>
                     ))}
                   </Wrap>
                   <HStack spacing={3} pt={1}>
-                    <Button size="sm" bg="text.accent" color="bg.canvas" _hover={{ opacity: 0.9 }} borderRadius="8px" fontSize="13px" onClick={() => openStudy(study.key)}>
+                    <Button
+                      size="sm"
+                      bg="text.accent"
+                      color="bg.canvas"
+                      _hover={{ opacity: 0.9 }}
+                      borderRadius="8px"
+                      fontSize="13px"
+                      onClick={() => openStudy(study.key)}
+                    >
                       View solution
                     </Button>
                     {study.nda && (
-                      <HStack spacing={1.5} border="1px dashed" borderColor="border.default" color="text.secondary" borderRadius="8px" px={3} py={1.5} fontSize="12px">
+                      <HStack
+                        spacing={1.5}
+                        border="1px dashed"
+                        borderColor="border.default"
+                        color="text.secondary"
+                        borderRadius="8px"
+                        px={3}
+                        py={1.5}
+                        fontSize="12px"
+                      >
                         <LuLock size={12} />
                         <Text>Private</Text>
                       </HStack>
@@ -138,12 +179,23 @@ export function CaseStudies() {
               <DrawerHeader fontFamily="heading">{active.title}</DrawerHeader>
               <DrawerBody>
                 <VStack align="stretch" spacing={5} pb={6}>
-                  <Text fontFamily="mono" fontSize="12px" color="text.secondary">
+                  <Text
+                    fontFamily="mono"
+                    fontSize="12px"
+                    color="text.secondary"
+                  >
                     {active.meta}
                     {active.nda ? ' · NDA-safe summary' : ''}
                   </Text>
                   <Box>
-                    <Text fontFamily="mono" fontSize="11px" letterSpacing="1.5px" color="text.accent" textTransform="uppercase" mb={2}>
+                    <Text
+                      fontFamily="mono"
+                      fontSize="11px"
+                      letterSpacing="1.5px"
+                      color="text.accent"
+                      textTransform="uppercase"
+                      mb={2}
+                    >
                       Problem
                     </Text>
                     <Text fontSize="14px" color="text.primary" lineHeight="1.6">
@@ -151,7 +203,14 @@ export function CaseStudies() {
                     </Text>
                   </Box>
                   <Box>
-                    <Text fontFamily="mono" fontSize="11px" letterSpacing="1.5px" color="text.accent" textTransform="uppercase" mb={2}>
+                    <Text
+                      fontFamily="mono"
+                      fontSize="11px"
+                      letterSpacing="1.5px"
+                      color="text.accent"
+                      textTransform="uppercase"
+                      mb={2}
+                    >
                       Architecture solution
                     </Text>
                     <Text fontSize="14px" color="text.primary" lineHeight="1.6">
@@ -159,13 +218,27 @@ export function CaseStudies() {
                     </Text>
                   </Box>
                   <Box>
-                    <Text fontFamily="mono" fontSize="11px" letterSpacing="1.5px" color="text.accent" textTransform="uppercase" mb={2}>
+                    <Text
+                      fontFamily="mono"
+                      fontSize="11px"
+                      letterSpacing="1.5px"
+                      color="text.accent"
+                      textTransform="uppercase"
+                      mb={2}
+                    >
                       Tech stack
                     </Text>
                     <Wrap spacing={2}>
                       {active.stack.map((item) => (
                         <WrapItem key={item}>
-                          <Tag fontFamily="mono" fontSize="11px" color="text.secondary" bg="bg.surfaceRaised" border="none" borderRadius="full">
+                          <Tag
+                            fontFamily="mono"
+                            fontSize="11px"
+                            color="text.secondary"
+                            bg="bg.surfaceRaised"
+                            border="none"
+                            borderRadius="full"
+                          >
                             {item}
                           </Tag>
                         </WrapItem>
@@ -173,7 +246,14 @@ export function CaseStudies() {
                     </Wrap>
                   </Box>
                   <Box>
-                    <Text fontFamily="mono" fontSize="11px" letterSpacing="1.5px" color="text.accent" textTransform="uppercase" mb={2}>
+                    <Text
+                      fontFamily="mono"
+                      fontSize="11px"
+                      letterSpacing="1.5px"
+                      color="text.accent"
+                      textTransform="uppercase"
+                      mb={2}
+                    >
                       Impact
                     </Text>
                     <Text fontSize="14px" color="text.primary" lineHeight="1.6">
