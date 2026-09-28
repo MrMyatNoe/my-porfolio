@@ -486,44 +486,51 @@ inside the `VStack` changes.
 
 ## R3.4 Drafted Timeline bullet content (for review)
 
-Restructured from each role's existing `description` + `categories` in
-`data/career.ts`. Allianz and Nan Yan bullets are kept consistent with the
-wording already live in `CaseStudies.tsx` rather than the mockup's slightly
-different phrasing, so the two sections don't describe the same roles two
-different ways.
+*(Revised post-implementation — the review loop for the implementation plan's
+Task 5 caught that the first draft below had drifted from this section's own
+stated rule. This revision replaces it.)* Restructured from each role's
+existing `description` + `categories` in `data/career.ts` — every clause
+below must trace to a word or tag that was already in that entry, no new
+specifics (architecture decisions, metrics, system names, people-management
+claims). The first draft of this section leaned on `tmn-portfolio-concept.html`'s
+richer Allianz/Nan Yan copy instead, which introduced claims — "Architect
+Focus," "Led system design," "underwriting engines," "four stack iterations,"
+a mentoring bullet for Nan Yan — that were not in `career.ts` and were never
+vetted for public, NDA-conscious accuracy. That draft never shipped; this is
+the corrected version.
 
 1. **Allianz Technology Thailand** (Jul 2022 – Present)
-   - Architected and implemented high-throughput microservices within an
-     event-driven architecture using Spring Boot and Kafka
-   - Led system design and integration of Kafka message brokers to handle
-     high-volume data streaming for underwriting engines
-   - Established automated DevSecOps pipelines via GitHub Actions using
-     contract and Playwright testing
+   - Backend Developer on the LCUWWB insurance platform project, working
+     within a microservices architecture built with Spring Boot and Kafka
+   - Wrote and maintained contract tests and Playwright tests as part of
+     the team's testing practice
+   - Worked within automated DevSecOps pipelines using GitHub Actions,
+     following Agile methodology
    - Badges: `Java`, `Spring Boot`, `Kafka`, `Microservices`
+   - Role label: `Senior Backend Developer` — reuses Hero's already-shipped
+     title (`Hero.tsx`'s `CURRENT_TITLE` constant) rather than inventing a
+     new one, so the two sections can't drift again.
 
 2. **Personal Fullstack Mobile & Web Project** (Dec 2021 – Present)
-   - Built and shipped a Flutter mobile app with a companion Next.js/Chakra
-     UI admin console, backed by Firebase for auth, data, and real-time sync
-   - Owned the full product lifecycle solo — design, development, and
-     AdMob monetization
-   - Automated build and release checks with GitHub Actions
+   - Built a fullstack mobile and web application as the sole fullstack
+     developer, product owner, and designer
+   - Built the mobile app in Flutter with Firebase and AdMob, and the web
+     app in Next.js with Chakra UI
+   - Automated builds and releases with GitHub Actions
    - Badges: `Flutter`, `Firebase`, `Next.js`, `Chakra UI`
 
 3. **Freelance Frontend Developer, IHRP** (Dec 2021 – Jan 2022)
-   - Built the blog frontend in Next.js and Chakra UI, consuming a GraphQL
-     API for content
-   - Delivered the engagement independently as a freelance contractor on a
-     fixed scope
+   - Frontend Developer on the IHRP blog project
+   - Built the frontend in Next.js and Chakra UI, with GraphQL for data and
+     attention to UI/UX
+   - Worked as an independent freelance contractor
    - Badges: `Next.js`, `Chakra UI`, `GraphQL`, `Freelance`
 
 4. **Nanyan Platform, Myanmar** (Oct 2020 – Apr 2022)
-   - Carried a multi-phase e-commerce and retail platform through four
-     stack iterations — Spring Boot/Hibernate, then NestJS/Prisma, then a
-     Remix + Chakra UI frontend
-   - Worked across backend, frontend, and full-stack roles as the
-     platform's needs shifted phase to phase
-   - Mentored junior developers and helped establish database-modeling and
-     API-integration practices
+   - Built the e-commerce platform across backend, frontend, and full-stack
+     work as it moved through development phases
+   - Worked with Spring Boot/Hibernate, then NestJS/Prisma, and
+     Remix/Chakra UI across the platform's stack
    - Badges: `Spring Boot`, `NestJS`, `Prisma`, `Remix` (matches
      `CaseStudies.tsx`'s existing stack tags for this role)
 
