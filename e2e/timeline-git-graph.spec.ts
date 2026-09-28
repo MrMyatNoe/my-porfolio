@@ -12,7 +12,7 @@ test.describe('Professional experience git-graph timeline', () => {
     await expect(timeline.getByText('#a3f9c2 · current')).toBeVisible()
     await expect(
       timeline.getByText(
-        'Architected and implemented high-throughput microservices within an event-driven architecture using Spring Boot and Kafka'
+        'Backend Developer on the LCUWWB insurance platform project, working within a microservices architecture built with Spring Boot and Kafka'
       )
     ).toBeVisible()
   })
