@@ -39,4 +39,17 @@ test.describe('Header interactions', () => {
     await expect(page).toHaveURL(/#case-studies$/)
     await expect(page.locator('#case-studies')).toBeInViewport()
   })
+
+  test('header logo links back to the hero section', async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 900 })
+    await page.goto('/')
+
+    await page.getByTestId('desktop-nav').getByRole('link', { name: 'Case studies' }).click()
+    await expect(page).toHaveURL(/#case-studies$/)
+
+    await page.getByTestId('header-logo').click()
+
+    await expect(page).toHaveURL(/#hero$/)
+    await expect(page.getByTestId('hero-section')).toBeInViewport()
+  })
 })

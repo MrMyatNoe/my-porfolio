@@ -44,25 +44,33 @@ export function Header() {
     >
       <Container maxW="1080px" px={[5, 8]} data-testid="content-container">
         <Flex align="center" justify="space-between" h="72px">
-          <HStack spacing={3}>
-            <Flex
-              w="36px"
-              h="36px"
-              border="1px solid"
-              borderColor="text.accent"
-              borderRadius="8px"
-              align="center"
-              justify="center"
-              fontFamily="mono"
-              fontSize="12px"
-              color="text.accent"
-            >
-              {initials}
-            </Flex>
-            <Box fontFamily="heading" fontWeight="600" fontSize="17px">
-              {name}
-            </Box>
-          </HStack>
+          <Link
+            href="#hero"
+            data-testid="header-logo"
+            display="flex"
+            alignItems="center"
+            _hover={{ textDecoration: 'none' }}
+          >
+            <HStack spacing={3}>
+              <Flex
+                w="36px"
+                h="36px"
+                border="1px solid"
+                borderColor="text.accent"
+                borderRadius="8px"
+                align="center"
+                justify="center"
+                fontFamily="mono"
+                fontSize="12px"
+                color="text.accent"
+              >
+                {initials}
+              </Flex>
+              <Box fontFamily="heading" fontWeight="600" fontSize="17px">
+                {name}
+              </Box>
+            </HStack>
+          </Link>
 
           <HStack spacing={8} display={{ base: 'none', md: 'flex' }} data-testid="desktop-nav">
             {NAV_LINKS.map((link) => (

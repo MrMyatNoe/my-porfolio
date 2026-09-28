@@ -16,7 +16,7 @@ export function Hero() {
   const { name, description, socialLinks } = resumeData.personalInfo
 
   return (
-    <Box as="section" py={[10, 10, 16]} data-testid="hero-section">
+    <Box as="section" id="hero" py={[10, 10, 16]} data-testid="hero-section">
       <Container maxW="1080px" px={[5, 8, 16]} data-testid="content-container">
         <Flex align="center" gap={{ base: 10, lg: 16 }} direction={{ base: 'column', lg: 'row' }}>
           <VStack align="flex-start" spacing={5} maxW="600px" flexShrink={0}>
