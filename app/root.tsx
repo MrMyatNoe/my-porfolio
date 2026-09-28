@@ -1,6 +1,6 @@
 import styles from '~/styles/global.css'
 
-import { Box, ChakraProvider } from '@chakra-ui/react'
+import { Box, ChakraProvider, ColorModeScript } from '@chakra-ui/react'
 import {
   Links,
   LiveReload,
@@ -23,7 +23,7 @@ export const links = () => [
   { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossOrigin: 'anonymous' },
   {
     rel: 'stylesheet',
-    href: 'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap',
+    href: 'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap',
   },
   { rel: 'stylesheet', href: styles },
 ]
@@ -36,6 +36,7 @@ export default function App() {
         <Links />
       </head>
       <body>
+        <ColorModeScript initialColorMode={theme.config.initialColorMode} />
         <ChakraProvider theme={theme}>
           <Box
             as="a"

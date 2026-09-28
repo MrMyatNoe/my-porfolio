@@ -1,27 +1,30 @@
 import { extendTheme } from '@chakra-ui/react'
 
 const theme = extendTheme({
+  config: {
+    initialColorMode: 'dark',
+    useSystemColorMode: false,
+  },
   fonts: {
     heading: "'Space Grotesk', sans-serif",
-    body: "'IBM Plex Sans', sans-serif",
+    body: "'Inter', sans-serif",
     mono: "'IBM Plex Mono', monospace",
   },
   semanticTokens: {
     colors: {
-      'bg.canvas': { default: '#F5F7F8', _dark: '#0F1720' },
-      'bg.surface': { default: '#FFFFFF', _dark: '#16212C' },
-      'bg.surfaceRaised': { default: '#EEF2F3', _dark: '#1C2A36' },
-      'border.default': { default: '#DCE3E7', _dark: '#25333F' },
+      'bg.canvas': { default: '#F5F7F8', _dark: '#0A1420' },
+      'bg.surface': { default: '#FFFFFF', _dark: '#111F33' },
+      'bg.surfaceRaised': { default: '#EEF2F3', _dark: '#16283F' },
+      'border.default': { default: '#DCE3E7', _dark: '#223350' },
       'text.primary': { default: '#132029', _dark: '#E7EDF0' },
       'text.secondary': { default: '#51636D', _dark: '#93A5B1' },
       'text.accent': { default: '#0E8074', _dark: '#2FB8AE' },
+      'text.accentPurple': { default: '#6B46C1', _dark: '#B39DFF' },
+      'text.accentAmber': { default: '#B7791F', _dark: '#FDBA5C' },
     },
   },
   styles: {
     global: {
-      // Offsets native anchor-scroll targets (Header's nav links, Hero's
-      // #experience/#contact CTAs) by the sticky header's height, so a
-      // section's heading doesn't land underneath the 72px header.
       html: {
         scrollPaddingTop: '72px',
       },
