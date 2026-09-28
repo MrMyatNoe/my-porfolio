@@ -208,14 +208,12 @@ check before the narrative deep-dive.
   row, then a CTA row of primary button + secondary button + tertiary
   "Download résumé" link, then social icons. Full email/phone/address block
   stays out of Hero, down in Footer/Contact.
-- **Fix:** `resumeData.personalInfo.title` ("Senior Software Engineer") must
-  match the current role stated in Timeline/Allianz data. The mockup settled
-  on **"Senior Backend Developer"**, reconciling Allianz's actual title
-  ("Advanced Backend Developer") with the site's senior positioning —
-  confirm this exact wording before implementing, since it's a factual
-  identity claim, not just a display choice. Reconcile in `data/resume.ts`
-  and pull from the same milestone data Timeline uses, so the two can't
-  drift again.
+- **Fix** *(superseded — see rev 3 §R3.6)*: this originally called for
+  reconciling `resumeData.personalInfo.title` with Timeline/Allianz's role
+  so the two matched verbatim. Rev 3 revisits this: Hero's headline and
+  Timeline's job title are now treated as two different, non-contradictory
+  claims (career-level self-description vs. literal historical title)
+  rather than one value duplicated in two places.
 - **Tokens:** description text → `text.secondary` (fixes the 4.07:1
   dark-mode fail above). CTA row follows the interactive-color rule in §1.
 - **Breakpoints:** switch column→row at `lg` (1024px), not `sm` (480px) as
@@ -512,9 +510,9 @@ corrected below.)*
    - Worked within automated DevSecOps pipelines using GitHub Actions,
      following Agile methodology
    - Badges: `Java`, `Spring Boot`, `Kafka`, `Microservices`
-   - Role label: `Senior Backend Developer` — reuses Hero's already-shipped
-     title (`Hero.tsx`'s `CURRENT_TITLE` constant) rather than inventing a
-     new one, so the two sections can't drift again.
+   - Role label: `Backend Developer` *(revised again — see §R3.6; this is
+     the literal historical title, no longer forced to match Hero's
+     headline)*.
 
 2. **Personal Fullstack Mobile & Web Project** (Dec 2021 – Present)
    - Built a fullstack mobile and web application as the sole fullstack
@@ -561,3 +559,31 @@ cloud pill styling, drawer, dot-grid background, learn-cards, testimonial).
 Where it conflicts with a decision recorded above (e.g. flat skills list,
 fuller drawer copy, Nan Yan badge set), the decision above wins — the
 mockup was a starting exploration, not the final word on content.
+
+## R3.6 Hero headline vs. Allianz job title (post-launch revision)
+
+Rev 2 and the early part of rev 3 treated Hero's headline and Timeline's
+current-role label as one fact that had to match verbatim, reconciled via
+`Hero.tsx`'s `CURRENT_TITLE` constant ("Senior Backend Developer") shared
+by both. The user revisited this after launch and asked for something
+that read as more senior than "Senior Backend Developer" — options
+discussed were Technical Architect, System Architect, and Senior Software
+Engineer.
+
+Recommendation given and accepted: Technical/System Architect would
+overstate scope relative to what Timeline and Case Studies actually
+describe (engineering work, not architecture-level ownership) — the same
+category of risk already caught and corrected twice in this revision
+(§R3.4, §R3.5-adjacent Case Studies fix). Senior Software Engineer was
+already `resumeData.personalInfo.title`'s value, and reads as a
+*career-level* self-description rather than a specific job-title claim,
+so it doesn't need to match any one employer's title verbatim.
+
+**Resolution:** Hero pulls `resumeData.personalInfo.title` directly
+("Senior Software Engineer") instead of a hardcoded override. Timeline's
+Allianz entry (`data/career.ts`, id 1) reverts its `role` field to
+"Backend Developer" — the literal original title, no "Senior". These are
+now two different, non-contradictory claims by design: Hero states
+overall professional level, Timeline states the literal historical job
+title at that employer. The "must match verbatim" constraint from rev
+2/early rev 3 no longer applies to this pair.
