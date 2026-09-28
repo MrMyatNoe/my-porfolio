@@ -5,15 +5,8 @@ import { Box, Button, Container, Flex, HStack, Heading, Link, Text, VStack } fro
 
 import { HeroDiagram } from './HeroDiagram'
 
-// Reconciles the long-standing mismatch between resumeData.personalInfo.title
-// ("Senior Software Engineer") and the current role in career.ts's Allianz
-// milestone ("Backend Developer"). Kept as a local constant instead of editing
-// either data file — don't revert this to resumeData.personalInfo.title, that
-// reintroduces the mismatch.
-const CURRENT_TITLE = 'Senior Backend Developer'
-
 export function Hero() {
-  const { name, description, socialLinks } = resumeData.personalInfo
+  const { name, title, description, socialLinks } = resumeData.personalInfo
 
   return (
     <Box as="section" id="hero" py={[10, 10, 16]} data-testid="hero-section">
@@ -32,7 +25,7 @@ export function Hero() {
                 {name}
               </Heading>
               <Text fontFamily="heading" fontSize={{ base: '18px', md: '20px', lg: '22px' }} fontWeight="500" color="text.accent" mt={2}>
-                {CURRENT_TITLE}
+                {title}
               </Text>
             </Box>
 

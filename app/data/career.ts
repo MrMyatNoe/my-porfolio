@@ -15,7 +15,7 @@ export const milestones: Milestone[] = [
     hash: 'a3f9c2',
     current: true,
     company: 'Allianz Technology Thailand',
-    role: 'Senior Backend Developer',
+    role: 'Backend Developer',
     date: 'July 2022 - Present',
     bullets: [
       'Working on the LCUWWB insurance platform project, within a microservices architecture built with Spring Boot and Kafka',
