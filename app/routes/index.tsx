@@ -7,19 +7,21 @@ import { Timeline } from '~/_partials/Timeline'
 import { Footer } from '~/components/Footer'
 import { Header } from '~/components/Header'
 
-import { Box } from '@chakra-ui/react'
+import { Box, Container } from '@chakra-ui/react'
 
 export default function Index() {
   return (
     <>
       <Header />
       <Box as="main" id="main-content">
-        <Hero />
-        <Skill />
-        <Timeline />
-        <CaseStudies />
-        <PersonalProjects />
-        <ContinuousLearning />
+        <Container maxW="1080px" px={[5, 8, 16]} data-testid="content-container">
+          <Hero />
+          <Skill />
+          <Timeline />
+          <CaseStudies />
+          <PersonalProjects />
+          <ContinuousLearning />
+        </Container>
       </Box>
       <Footer />
     </>

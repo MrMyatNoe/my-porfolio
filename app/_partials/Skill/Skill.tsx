@@ -10,7 +10,7 @@ import {
 } from 'react-icons/lu'
 import { Reveal } from '~/components/Reveal'
 
-import { Box, Container, Heading, HStack, SimpleGrid, Tag, Text, Wrap, WrapItem } from '@chakra-ui/react'
+import { Box, Heading, HStack, SimpleGrid, Tag, Text, Wrap, WrapItem } from '@chakra-ui/react'
 
 interface SkillCategory {
   label: string
@@ -33,40 +33,38 @@ const ACCENTS = ['text.accent', 'text.accentPurple', 'text.accentAmber'] as cons
 export function Skill() {
   return (
     <Box as="section" id="skills" py={[10, 10, 14]} bg="bg.surface" borderY="1px solid" borderColor="border.default">
-      <Container maxW="1080px" px={[5, 8, 16]} data-testid="content-container">
-        <Heading as="h2" fontFamily="heading" fontSize={{ base: '24px', md: '30px' }}>
-          Skills
-        </Heading>
-        <Text fontSize="14px" color="text.secondary" mt={1}>
-          Technologies I work with in production, grouped by where they sit in a system.
-        </Text>
-        <SimpleGrid columns={{ base: 1, lg: 3 }} spacing={9} mt={8} data-testid="skills-grid">
-          {SKILL_CATEGORIES.map(({ label, icon: CategoryIcon, skills }, index) => {
-            const accent = ACCENTS[index % ACCENTS.length]
-            return (
-              <Reveal key={label} delay={index * 0.05}>
-                <Box borderLeft="2px solid" borderColor={accent} pl={4} data-testid="skill-category">
-                  <HStack spacing={2} borderBottom="1px solid" borderColor="border.default" pb={2.5}>
-                    <CategoryIcon size={16} color={`var(--chakra-colors-${accent.replace('.', '-')})`} />
-                    <Text fontFamily="heading" fontSize="15px" fontWeight="600">
-                      {label}
-                    </Text>
-                  </HStack>
-                  <Wrap spacing={2} mt={3.5}>
-                    {skills.map((skill) => (
-                      <WrapItem key={skill}>
-                        <Tag fontFamily="mono" fontSize="12.5px" color="text.secondary" bg="bg.surfaceRaised" border="1px solid" borderColor="border.default" borderRadius="full" px={4} py={1.5}>
-                          {skill}
-                        </Tag>
-                      </WrapItem>
-                    ))}
-                  </Wrap>
-                </Box>
-              </Reveal>
-            )
-          })}
-        </SimpleGrid>
-      </Container>
+      <Heading as="h2" fontFamily="heading" fontSize={{ base: '24px', md: '30px' }}>
+        Skills
+      </Heading>
+      <Text fontSize="14px" color="text.secondary" mt={1}>
+        Technologies I work with in production, grouped by where they sit in a system.
+      </Text>
+      <SimpleGrid columns={{ base: 1, lg: 3 }} spacing={9} mt={8} data-testid="skills-grid">
+        {SKILL_CATEGORIES.map(({ label, icon: CategoryIcon, skills }, index) => {
+          const accent = ACCENTS[index % ACCENTS.length]
+          return (
+            <Reveal key={label} delay={index * 0.05}>
+              <Box borderLeft="2px solid" borderColor={accent} pl={4} data-testid="skill-category">
+                <HStack spacing={2} borderBottom="1px solid" borderColor="border.default" pb={2.5}>
+                  <CategoryIcon size={16} color={`var(--chakra-colors-${accent.replace('.', '-')})`} />
+                  <Text fontFamily="heading" fontSize="15px" fontWeight="600">
+                    {label}
+                  </Text>
+                </HStack>
+                <Wrap spacing={2} mt={3.5}>
+                  {skills.map((skill) => (
+                    <WrapItem key={skill}>
+                      <Tag fontFamily="mono" fontSize="12.5px" color="text.secondary" bg="bg.surfaceRaised" border="1px solid" borderColor="border.default" borderRadius="full" px={4} py={1.5}>
+                        {skill}
+                      </Tag>
+                    </WrapItem>
+                  ))}
+                </Wrap>
+              </Box>
+            </Reveal>
+          )
+        })}
+      </SimpleGrid>
     </Box>
   )
 }
