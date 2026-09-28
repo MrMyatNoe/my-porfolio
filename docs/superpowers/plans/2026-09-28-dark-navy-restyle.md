@@ -1076,7 +1076,7 @@ const CASE_STUDIES: CaseStudy[] = [
     stack: ['java17', 'spring-boot', 'kafka', 'playwright'],
     nda: true,
     problem:
-      'The underwriting workbench was a single backend monolith shared across underwriting and claims teams, making independent releases risky.',
+      'The underwriting workbench was a single backend monolith shared across underwriting and claims teams.',
     solution:
       "Took over backend ownership and split the monolith into contract-tested microservices, so each team could ship independently without breaking the other's workflow.",
     impact: "Underwriting and claims teams can now ship independently, without one team's release blocking the other.",
@@ -1090,10 +1090,10 @@ const CASE_STUDIES: CaseStudy[] = [
     stack: ['spring-boot', 'nestjs', 'prisma', 'remix'],
     nda: false,
     problem:
-      "The platform's technical needs shifted significantly over its lifetime, requiring the stack to evolve rather than stay fixed.",
+      "The e-commerce platform's stack needed to change across its backend, frontend, and full-stack work over its lifetime.",
     solution:
       'Carried the platform through four stack phases — Spring Boot/Hibernate, then NestJS/Prisma, then a Remix + Chakra UI frontend — working across backend, frontend, and full-stack roles as needs changed.',
-    impact: 'The platform kept shipping through each stack transition without a rebuild from scratch.',
+    impact: 'The platform continued shipping across each stack transition.',
   },
 ]
 
