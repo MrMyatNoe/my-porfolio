@@ -5,14 +5,22 @@ test.describe('Hero diagram accent alternation', () => {
     await page.goto('/')
     const diagram = page.getByTestId('hero-diagram')
 
-    const springBootColor = await diagram.getByText('spring-boot', { exact: true }).evaluate((el) => getComputedStyle(el).borderColor)
-    const kafkaColor = await diagram.getByText('kafka', { exact: true }).evaluate((el) => getComputedStyle(el).borderColor)
-    const postgresColor = await diagram.getByText('postgres', { exact: true }).evaluate((el) => getComputedStyle(el).borderColor)
-    const restApiColor = await diagram.getByText('rest-api', { exact: true }).evaluate((el) => getComputedStyle(el).borderColor)
+    const teal = 'rgb(47, 184, 174)'
+    const purple = 'rgb(179, 157, 255)'
+    const expected: Array<[string, string]> = [
+      ['spring-boot', teal],
+      ['next.js', purple],
+      ['kubernetes', teal],
+      ['aws', purple],
+      ['system-design', purple],
+      ['event-driven', teal],
+      ['api-design', teal],
+      ['microservices', purple],
+    ]
 
-    expect(springBootColor).toBe('rgb(47, 184, 174)')
-    expect(kafkaColor).toBe('rgb(179, 157, 255)')
-    expect(postgresColor).toBe('rgb(47, 184, 174)')
-    expect(restApiColor).toBe('rgb(179, 157, 255)')
+    for (const [label, color] of expected) {
+      const actual = await diagram.getByText(label, { exact: true }).evaluate((el) => getComputedStyle(el).borderColor)
+      expect(actual).toBe(color)
+    }
   })
 })
