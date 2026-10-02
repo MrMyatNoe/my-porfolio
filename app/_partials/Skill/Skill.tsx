@@ -2,6 +2,7 @@ import type { IconType } from 'react-icons'
 import {
   LuCheckCircle,
   LuDatabase,
+  LuLayers,
   LuMonitor,
   LuNetwork,
   LuRocket,
@@ -19,13 +20,14 @@ interface SkillCategory {
 }
 
 const SKILL_CATEGORIES: SkillCategory[] = [
-  { label: 'Languages & backend', icon: LuServer, skills: ['java', 'spring-boot', 'typescript', 'node.js', 'nestjs'] },
-  { label: 'APIs & messaging', icon: LuNetwork, skills: ['rest-api', 'graphql', 'kafka', 'microservices'] },
-  { label: 'Databases', icon: LuDatabase, skills: ['postgresql', 'mysql', 'mongodb', 'mssql', 'oracle-db'] },
+  { label: 'Languages & backend', icon: LuServer, skills: ['java', 'spring-boot', 'typescript', 'node.js', 'nestjs', 'golang (learning)'] },
+  { label: 'Architecture & practices', icon: LuLayers, skills: ['system-design', 'microservices', 'design-patterns'] },
+  { label: 'APIs & messaging', icon: LuNetwork, skills: ['rest-api', 'graphql', 'kafka'] },
+  { label: 'Databases', icon: LuDatabase, skills: ['postgresql', 'mysql', 'mongodb', 'mssql', 'oracle-db', 'redis'] },
   { label: 'Frontend', icon: LuMonitor, skills: ['react', 'remix', 'next.js', 'chakra-ui'] },
-  { label: 'Mobile', icon: LuSmartphone, skills: ['flutter', 'firebase', 'admob'] },
-  { label: 'Testing & quality', icon: LuCheckCircle, skills: ['unit-testing', 'contract-testing', 'playwright'] },
-  { label: 'Delivery & DevOps', icon: LuRocket, skills: ['github-actions', 'ci/cd', 'agile'] },
+  { label: 'Mobile', icon: LuSmartphone, skills: ['flutter', 'dart', 'firebase', 'admob'] },
+  { label: 'Testing & quality', icon: LuCheckCircle, skills: ['unit-testing', 'tdd', 'contract-testing', 'e2e-testing', 'regression-testing', 'playwright'] },
+  { label: 'Delivery & DevOps', icon: LuRocket, skills: ['github-actions', 'ci/cd', 'localstack', 'agile'] },
 ]
 
 const ACCENTS = ['text.accent', 'text.accentPurple', 'text.accentAmber'] as const
