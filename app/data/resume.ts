@@ -3,7 +3,7 @@ export const resumeData = {
     name: 'Thet Myat Noe',
     title: 'Senior Software Engineer',
     description:
-      'Results-driven Software Development professional with 7+ years of experience leading successful projects from inception to deployment. Proven ability to analyze complex business needs, design innovative solutions, and oversee efficient development processes. Expert in utilizing a wide range of programming languages, tools, and methodologies to deliver high-performance applications that exceed client expectations.',
+      'Senior full-stack engineer with 8+ years building and running production systems, from API design to cloud deployment. Currently growing toward solution architecture, with a focus on reliable, scalable designs.',
     profileImage: 'pp.jpg',
     socialLinks: [
       {

@@ -6,7 +6,7 @@ import {
   BsTwitter,
 } from 'react-icons/bs'
 
-import { Link } from '@chakra-ui/react'
+import { Flex, HStack, Link } from '@chakra-ui/react'
 
 const iconMap = {
   BsLinkedin: BsLinkedin,
@@ -30,15 +30,26 @@ interface SocialLinksProps {
 
 export function SocialLinks({ links }: SocialLinksProps) {
   return (
-    <>
-      {links.map(({ href, icon, label }, index) => {
+    <HStack spacing={2.5}>
+      {links.map(({ href, icon, label }) => {
         const Icon = iconMap[icon as IconKey]
         return (
-          <Link key={index} href={href} isExternal aria-label={label}>
-            <Icon size="30" />
+          <Link key={label} href={href} isExternal aria-label={label}>
+            <Flex
+              w="32px"
+              h="32px"
+              border="1px solid"
+              borderColor="text.accent"
+              borderRadius="8px"
+              align="center"
+              justify="center"
+              color="text.accent"
+            >
+              <Icon size={16} />
+            </Flex>
           </Link>
         )
       })}
-    </>
+    </HStack>
   )
 }

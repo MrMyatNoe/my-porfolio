@@ -1,99 +1,59 @@
-import { IconType } from 'react-icons'
-
-import {
-  Badge,
-  Box,
-  HStack,
-  Icon,
-  Text,
-  useBreakpointValue,
-  useColorModeValue,
-  VStack,
-} from '@chakra-ui/react'
+import { Box, HStack, Tag, Text, VStack, Wrap, WrapItem } from '@chakra-ui/react'
 
 interface CardProps {
-  id: number
-  categories: string[]
-  title: string
-  icon: IconType
-  description: string
+  hash: string
+  current?: boolean
+  company: string
+  role: string
   date: string
+  bullets: string[]
+  badges: string[]
 }
 
-const Card = ({
-  id,
-  categories,
-  title,
-  icon,
-  description,
-  date,
-}: CardProps) => {
-  // For even id show card on left side
-  // For odd id show card on right side
-  const isEvenId = id % 2 == 0
-  let borderWidthValue = isEvenId ? '15px 15px 15px 0' : '15px 0 15px 15px'
-  let leftValue = isEvenId ? '-15px' : 'unset'
-  let rightValue = isEvenId ? 'unset' : '-15px'
-  const isDesktop = useBreakpointValue({ base: false, md: true })
-  const isMobile = useBreakpointValue({ base: true, md: false })
-  let iconSize = isMobile ? 10 : 12
-  if (isMobile) {
-    leftValue = '-15px'
-    rightValue = 'unset'
-    borderWidthValue = '15px 15px 15px 0'
-  }
+const Card = ({ hash, current, company, role, date, bullets, badges }: CardProps) => {
   return (
-    <HStack
-      flex={1}
-      p={{ base: 3, sm: 6 }}
-      bg={useColorModeValue('gray.100', 'gray.800')}
-      spacing={5}
-      rounded="lg"
-      pos="relative"
-      _before={{
-        content: `""`,
-        w: '0',
-        h: '0',
-        borderColor: `transparent ${useColorModeValue(
-          '#edf2f6',
-          '#1a202c',
-        )} transparent`,
-        borderStyle: 'solid',
-        borderWidth: borderWidthValue,
-        position: 'absolute',
-        left: leftValue,
-        right: rightValue,
-        display: 'block',
-      }}
-    >
-      <Icon as={icon} w={iconSize} h={iconSize} color="teal.400" />
-      <Box>
-        <VStack mb={3} textAlign="left" alignItems="flex-start">
-          <Text
-            _hover={{ color: 'teal.400' }}
-            fontSize="md"
-            lineHeight={1.2}
-            fontWeight="bold"
-            w="100%"
+    <VStack align="stretch" spacing={2} flex={1} data-testid="timeline-entry">
+      <Text fontFamily="mono" fontSize="12px" color="text.accent">
+        #{hash}
+        {current ? ' · current' : ''}
+      </Text>
+      <HStack spacing={3} flexWrap="wrap" align="baseline">
+        <Text fontFamily="heading" fontWeight="600" fontSize="17px">
+          {company}
+        </Text>
+        <Text fontFamily="mono" fontSize="12px" color="text.secondary">
+          {date}
+        </Text>
+      </HStack>
+      <Text fontSize="14px" color="text.secondary">
+        {role}
+      </Text>
+      <VStack as="ul" align="stretch" spacing={1.5} mt={1} sx={{ listStyle: 'none' }}>
+        {bullets.map((bullet) => (
+          <Box
+            as="li"
+            key={bullet}
+            fontSize="13.5px"
+            color="text.primary"
+            pl={4}
+            position="relative"
+            lineHeight="1.5"
+            _before={{ content: '"+"', position: 'absolute', left: 0, color: 'text.accent', fontFamily: 'mono' }}
           >
-            {title}
-          </Text>
-          <Text fontSize="sm" color='teal.400'>
-            {date}
-          </Text>
-          <Text fontSize="md">
-            {description}
-          </Text>
-          <HStack spacing={2} mb={1} flexWrap="wrap">
-            {categories.map((cat) => (
-              <Badge variant="outline" colorScheme="green" key={cat}>
-                {cat}
-              </Badge>
-            ))}
-          </HStack>
-        </VStack>
-      </Box>
-    </HStack>
+            {bullet}
+          </Box>
+        ))}
+      </VStack>
+      <Wrap spacing={2} mt={1}>
+        {badges.map((badge) => (
+          <WrapItem key={badge}>
+            <Tag fontFamily="mono" fontSize="11px" color="text.secondary" bg="bg.surfaceRaised" border="none" borderRadius="full" px={3} py={1}>
+              {badge}
+            </Tag>
+          </WrapItem>
+        ))}
+      </Wrap>
+    </VStack>
   )
 }
 

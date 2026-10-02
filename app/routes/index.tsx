@@ -1,27 +1,27 @@
-import { Hero } from '~/_partials/Hero';
-import { Skill } from '~/_partials/Skill';
-import { Timeline } from '~/_partials/Timeline';
-import { Footer } from '~/components/Footer';
+import { CaseStudies } from '~/_partials/CaseStudies'
+import { ContinuousLearning } from '~/_partials/ContinuousLearning'
+import { Hero } from '~/_partials/Hero'
+import { PersonalProjects } from '~/_partials/PersonalProjects'
+import { Skill } from '~/_partials/Skill'
+import { Timeline } from '~/_partials/Timeline'
+import { Footer } from '~/components/Footer'
+import { Header } from '~/components/Header'
 
-import { Container, Divider } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react'
 
 export default function Index() {
   return (
-    <Container maxW="80%" alignContent="center">
-      {/* <Header /> */}
-      <Hero />
-      <Divider fontWeight="bold" color="gray.700" />
-      <Skill />
-      <Divider fontWeight="bold" color="gray.700" />
-      {/* <Career />
-      <Divider fontWeight="bold" color="gray.700" />
-      <Freelance />
-      <Divider fontWeight="bold" color="gray.700" />
-      <Persona />
-      <Divider fontWeight="bold" color="gray.700" /> */}
-      <Timeline />
-      <Divider fontWeight="bold" color="gray.700" />
+    <>
+      <Header />
+      <Box as="main" id="main-content">
+        <Hero />
+        <Skill />
+        <Timeline />
+        <CaseStudies />
+        <PersonalProjects />
+        <ContinuousLearning />
+      </Box>
       <Footer />
-    </Container>
+    </>
   )
 }

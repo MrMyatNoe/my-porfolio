@@ -28,7 +28,7 @@ export function Contacts({ contacts }: ContactProps) {
         return (
           <HStack key={key}>
             <Icon size="20" />
-            <Text fontSize={'sm'} color="gray.500">
+            <Text fontSize={'sm'} color="text.secondary">
               {contact}
             </Text>
           </HStack>

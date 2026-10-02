@@ -1,53 +1,127 @@
-import { Contacts } from '~/components/Contacts';
-import { SocialLinks } from '~/components/SocialLinks';
-import { resumeData } from '~/data/resume';
+import { SocialLinks } from '~/components/SocialLinks'
+import { resumeData } from '~/data/resume'
 
-import { Box, Flex, Heading, Image, Stack, Text } from '@chakra-ui/react';
+import {
+  Box,
+  Button,
+  Container,
+  Flex,
+  Heading,
+  HStack,
+  Link,
+  Text,
+  VStack,
+} from '@chakra-ui/react'
+
+import { HeroDiagram } from './HeroDiagram'
 
 export function Hero() {
-  const { name, title, description, profileImage, socialLinks, contacts } =
-    resumeData.personalInfo
+  const { name, title, description, socialLinks } = resumeData.personalInfo
+
   return (
-    <>
-      <Flex
-        w="100%"
-        px="6"
-        py="5"
-        align="center"
-        gap="4"
-        direction={['column', 'row']}
-      >
-        <Box w={['100%', '50%']}>
-          <Stack spacing={4}>
-            <Heading fontSize={['30px', '40px']} size="lg" letterSpacing="2px">
-              Hello! This is
-            </Heading>
-            <Heading fontSize={['30px', '40px']} size="lg" letterSpacing="2px">
-              {name}
-            </Heading>
-            <Text fontSize={['lg', 'xl']}>{title}</Text>
-            <Text fontSize={['sm', 'md']} color="gray.500">
+    <Box as="section" id="hero" py={[10, 10, 16]} data-testid="hero-section">
+      <Container maxW="1080px" px={[5, 8, 16]} data-testid="content-container">
+        <Flex
+          align="center"
+          gap={{ base: 10, lg: 16 }}
+          direction={{ base: 'column', lg: 'row' }}
+        >
+          <VStack align="flex-start" spacing={5} maxW="600px" flexShrink={0}>
+            <HStack spacing={2}>
+              <Box w="8px" h="8px" borderRadius="full" bg="text.accent" />
+              <Text fontSize="13px" color="text.secondary">
+                Open to senior full-stack &amp; architect-track roles
+              </Text>
+            </HStack>
+
+            <Box>
+              <Heading
+                as="h1"
+                fontFamily="heading"
+                fontSize={{ base: '36px', md: '44px', lg: '56px' }}
+                lineHeight="1.05"
+              >
+                {name}
+              </Heading>
+              <Text
+                fontFamily="heading"
+                fontSize={{ base: '18px', md: '20px', lg: '22px' }}
+                fontWeight="500"
+                color="text.accent"
+                mt={2}
+              >
+                {title}
+              </Text>
+            </Box>
+
+            <Text
+              fontSize="16px"
+              lineHeight="1.6"
+              color="text.secondary"
+              maxW="480px"
+            >
               {description}
             </Text>
-            <Flex align="left" gap="6" direction="row">
-              <SocialLinks links={socialLinks} />
-            </Flex>
-            <Flex align="left" gap="2" direction="column">
-              <Contacts contacts={contacts} />
-            </Flex>
-          </Stack>
-        </Box>
-        <Box w={['100%', '50%']}>
-          <Flex w="100%" justify={['center', 'right']}>
-            <Image
-              borderRadius="full"
-              boxSize={['200px', '250px']}
-              src={profileImage}
-              alt={name}
-            />
-          </Flex>
-        </Box>
-      </Flex>
-    </>
+
+            <HStack spacing={{ base: 6, md: 8 }} pt={2}>
+              <VStack align="flex-start" spacing={0}>
+                <Text fontFamily="heading" fontSize="26px" fontWeight="700">
+                  8+
+                </Text>
+                <Text fontSize="12px" color="text.secondary">
+                  Years building production software
+                </Text>
+              </VStack>
+              <VStack align="flex-start" spacing={0}>
+                <Text fontFamily="heading" fontSize="26px" fontWeight="700">
+                  6
+                </Text>
+                <Text fontSize="12px" color="text.secondary">
+                  Production systems delivered
+                </Text>
+              </VStack>
+            </HStack>
+
+            <HStack spacing={3} pt={2} flexWrap="wrap">
+              <Button
+                as="a"
+                href="#experience"
+                bg="text.accent"
+                color="bg.canvas"
+                _hover={{ opacity: 0.9 }}
+                borderRadius="8px"
+                fontSize="14px"
+              >
+                View experience
+              </Button>
+              <Button
+                as="a"
+                href="#contact"
+                variant="outline"
+                borderColor="text.accent"
+                color="text.accent"
+                borderRadius="8px"
+                fontSize="14px"
+              >
+                Get in touch
+              </Button>
+              <Link
+                href="/resume.pdf"
+                download
+                fontSize="14px"
+                fontWeight="600"
+                color="text.accent"
+              >
+                Download résumé
+              </Link>
+            </HStack>
+
+            <SocialLinks links={socialLinks} />
+          </VStack>
+
+          <HeroDiagram name={name} />
+        </Flex>
+      </Container>
+    </Box>
   )
 }

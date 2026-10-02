@@ -1,37 +1,74 @@
-import { Center, Flex, Heading } from '@chakra-ui/react'
+import type { IconType } from 'react-icons'
+import {
+  LuCheckCircle,
+  LuDatabase,
+  LuLayers,
+  LuMonitor,
+  LuNetwork,
+  LuRocket,
+  LuServer,
+  LuSmartphone,
+} from 'react-icons/lu'
+import { Reveal } from '~/components/Reveal'
 
-import { Backend } from './Backend'
-import { Frontend } from './Frontend'
-import { Mobile } from './Mobile'
+import { Box, Container, Heading, HStack, SimpleGrid, Tag, Text, Wrap, WrapItem } from '@chakra-ui/react'
+
+interface SkillCategory {
+  label: string
+  icon: IconType
+  skills: string[]
+}
+
+const SKILL_CATEGORIES: SkillCategory[] = [
+  { label: 'Languages & backend', icon: LuServer, skills: ['java', 'spring-boot', 'typescript', 'node.js', 'nestjs', 'golang (learning)'] },
+  { label: 'Architecture & practices', icon: LuLayers, skills: ['system-design', 'microservices', 'design-patterns'] },
+  { label: 'APIs & messaging', icon: LuNetwork, skills: ['rest-api', 'graphql', 'kafka'] },
+  { label: 'Databases', icon: LuDatabase, skills: ['postgresql', 'mysql', 'mongodb', 'mssql', 'oracle-db', 'redis'] },
+  { label: 'Frontend', icon: LuMonitor, skills: ['react', 'remix', 'next.js', 'chakra-ui'] },
+  { label: 'Mobile', icon: LuSmartphone, skills: ['flutter', 'dart', 'firebase', 'admob'] },
+  { label: 'Testing & quality', icon: LuCheckCircle, skills: ['unit-testing', 'tdd', 'contract-testing', 'e2e-testing', 'regression-testing', 'playwright'] },
+  { label: 'Delivery & DevOps', icon: LuRocket, skills: ['github-actions', 'ci/cd', 'localstack', 'agile'] },
+]
+
+const ACCENTS = ['text.accent', 'text.accentPurple', 'text.accentAmber'] as const
 
 export function Skill() {
   return (
-    <Flex
-      mt={['10', '12']}
-      mb={['10', '12']}
-      w="100%"
-      px="6"
-      py="5"
-      direction="column"
-      gap="4"
-    >
-      <Center>
-        <Heading fontSize={['30px', '40px']} size="lg" letterSpacing="2px">
-          He Does
+    <Box as="section" id="skills" py={[10, 10, 14]} bg="bg.surfaceSoft" borderY="1px solid" borderColor="border.default">
+      <Container maxW="1080px" px={[5, 8, 16]} data-testid="content-container">
+        <Heading as="h2" fontFamily="heading" fontSize={{ base: '24px', md: '30px' }}>
+          Skills
         </Heading>
-      </Center>
-      <Flex
-        w="100%"
-        align="center"
-        gap="4"
-        direction={['column', 'row']}
-        mt={['5', '6']}
-        mb={['5', '6']}
-      >
-        <Frontend />
-        <Backend />
-        <Mobile />
-      </Flex>
-    </Flex>
+        <Text fontSize="14px" color="text.secondary" mt={1}>
+          Technologies I work with in production, grouped by where they sit in a system.
+        </Text>
+        <SimpleGrid columns={{ base: 1, lg: 3 }} spacing={9} mt={8} data-testid="skills-grid">
+          {SKILL_CATEGORIES.map(({ label, icon: CategoryIcon, skills }, index) => {
+            const accent = ACCENTS[index % ACCENTS.length]
+            return (
+              <Reveal key={label} delay={index * 0.05}>
+                <Box borderLeft="2px solid" borderColor={accent} pl={4} data-testid="skill-category">
+                  <HStack spacing={2} borderBottom="1px solid" borderColor="border.default" pb={2.5}>
+                    <CategoryIcon size={16} color={`var(--chakra-colors-${accent.replace('.', '-')})`} />
+                    <Text fontFamily="heading" fontSize="15px" fontWeight="600">
+                      {label}
+                    </Text>
+                  </HStack>
+                  <Wrap spacing={2} mt={3.5}>
+                    {skills.map((skill) => (
+                      <WrapItem key={skill}>
+                        <Tag fontFamily="mono" fontSize="12.5px" color="text.secondary" bg="bg.surfaceRaised" border="1px solid" borderColor="border.default" borderRadius="full" px={4} py={1.5}>
+                          {skill}
+                        </Tag>
+                      </WrapItem>
+                    ))}
+                  </Wrap>
+                </Box>
+              </Reveal>
+            )
+          })}
+        </SimpleGrid>
+      </Container>
+    </Box>
   )
 }
